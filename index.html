@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BumiTani — Distributor Obat & Alat Pertanian Modern Premium</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="BumiTani menyediakan produk pertanian premium mulai dari bibit unggul, nutrisi, pakan, peralatan modern, pestisida, dan pupuk berkualitas tinggi. Dapatkan konsultasi gratis.">
+  <meta name="keywords" content="BumiTani, pertanian modern, pupuk, bibit unggul, pestisida, pakan ternak, alat pertanian, Yara Indonesia, Meroke Tetap Jaya, Petrokimia Gresik">
+  <meta name="author" content="BumiTani Developer">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="BumiTani — Solusi Pertanian Modern Enterprise">
+  <meta property="og:description" content="Distributor terlengkap produk pupuk, pestisida, bibit unggul, nutrisi hewan, pakan ternak, dan alat pertanian modern dengan harga produsen terjangkau.">
+  <meta property="og:image" content="assets/Header-Profil.jpg">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Tailwind Custom Theme Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sage: {
+              50: '#f4f7f5',
+              100: '#e5ebe7',
+              200: '#ccd9d0',
+              300: '#a7bfae',
+              400: '#87a995',
+              500: '#648b74',
+              600: '#4e6f5a',
+              700: '#3f5849',
+              800: '#35483c',
+              900: '#2c3c33',
+            },
+            forest: {
+              50: '#f3f6f4',
+              100: '#e1e8e4',
+              200: '#c5d3cb',
+              300: '#9fb5a9',
+              400: '#759483',
+              500: '#567766',
+              600: '#425d4f',
+              700: '#364c41',
+              800: '#2d3e35',
+              900: '#203227', // Dark Forest Accent
+            },
+            broken: {
+              50: '#fafafa',
+              100: '#f7f8f6', // Broken white soft
+              200: '#efefe9',
+              300: '#e5e5dd',
+              900: '#151c18'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Manrope', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-broken-100 text-broken-900 selection:bg-sage-200 selection:text-forest-900">
+
+  <!-- ================= HEADER / STICKY NAVBAR ================= -->
+  <header class="glass-header fixed top-0 left-0 right-0 z-40 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo and Brand -->
+        <a href="#" data-tab="home" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-lg bg-forest-900 flex items-center justify-center text-broken-100 font-display font-bold shadow-sm transition-transform duration-300 group-hover:scale-105">
+            BT
+          </div>
+          <span class="font-display font-extrabold text-xl tracking-tight text-forest-900 transition-colors duration-300 group-hover:text-forest-700">
+            BumiTani
+          </span>
+        </a>
+
+        <!-- Desktop Navigation Links (Clean, No Emojis) -->
+        <nav class="hidden md:flex items-center space-x-8">
+          <a href="#home" data-tab="home" class="text-stone-600 hover:text-forest-900 font-medium text-sm py-2 border-b-2 border-transparent transition duration-200">Home</a>
+          <a href="#profile" data-tab="profile" class="text-stone-600 hover:text-forest-900 font-medium text-sm py-2 border-b-2 border-transparent transition duration-200">Profil Perusahaan</a>
+          <a href="#products" data-tab="products" class="text-stone-600 hover:text-forest-900 font-medium text-sm py-2 border-b-2 border-transparent transition duration-200">Katalog Produk</a>
+          <a href="#faq" data-tab="faq" class="text-stone-600 hover:text-forest-900 font-medium text-sm py-2 border-b-2 border-transparent transition duration-200">FAQ</a>
+          <a href="#contact" data-tab="contact" class="text-stone-600 hover:text-forest-900 font-medium text-sm py-2 border-b-2 border-transparent transition duration-200">Kontak</a>
+        </nav>
+
+        <!-- Right Side Controls (Cart & Search trigger) -->
+        <div class="flex items-center gap-4">
+          <!-- Shopping Cart Button (Desktop) -->
+          <button id="cart-open-btn" class="relative p-2.5 rounded-full hover:bg-stone-200/50 text-stone-700 transition duration-200 focus:outline-none">
+            <i data-lucide="shopping-bag" class="w-5.5 h-5.5 stroke-[1.8]"></i>
+            <span class="cart-counter absolute -top-1.5 -right-1.5 bg-forest-900 text-broken-100 text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center hidden border-2 border-broken-100">
+              0
+            </span>
+          </button>
+          
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-open" class="md:hidden p-2.5 rounded-full hover:bg-stone-200/50 text-stone-700 transition duration-200 focus:outline-none">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= SIDEBAR OVERLAY ================= -->
+  <div id="sidebar-overlay" class="sidebar-overlay fixed inset-0 z-45"></div>
+
+  <!-- ================= MOBILE NAVIGATION MENU DRAWER ================= -->
+  <div id="mobile-menu-drawer" class="fixed top-0 right-0 bottom-0 w-80 max-w-full bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between">
+    <div class="p-6">
+      <div class="flex items-center justify-between border-b border-stone-100 pb-5 mb-6">
+        <span class="font-display font-bold text-lg text-forest-900">Menu Navigasi</span>
+        <button id="mobile-menu-close" class="p-2 rounded-full hover:bg-stone-100 text-stone-500 transition duration-200">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <nav class="flex flex-col gap-4">
+        <a href="#home" data-tab="home" class="text-stone-700 hover:text-forest-900 font-medium text-base py-2 flex items-center justify-between border-b border-stone-50/50">
+          <span>Home</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
+        </a>
+        <a href="#profile" data-tab="profile" class="text-stone-700 hover:text-forest-900 font-medium text-base py-2 flex items-center justify-between border-b border-stone-50/50">
+          <span>Profil Perusahaan</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
+        </a>
+        <a href="#products" data-tab="products" class="text-stone-700 hover:text-forest-900 font-medium text-base py-2 flex items-center justify-between border-b border-stone-50/50">
+          <span>Katalog Produk</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
+        </a>
+        <a href="#faq" data-tab="faq" class="text-stone-700 hover:text-forest-900 font-medium text-base py-2 flex items-center justify-between border-b border-stone-50/50">
+          <span>FAQ</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
+        </a>
+        <a href="#contact" data-tab="contact" class="text-stone-700 hover:text-forest-900 font-medium text-base py-2 flex items-center justify-between border-b border-stone-50/50">
+          <span>Kontak</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
+        </a>
+      </nav>
+    </div>
+    
+    <div class="p-6 border-t border-stone-100 bg-stone-50 flex flex-col gap-4">
+      <!-- Mobile Cart Quick Trigger -->
+      <button id="cart-open-btn-mobile" class="w-full bg-forest-900 hover:bg-forest-800 text-broken-100 py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition duration-200 shadow-sm">
+        <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+        Keranjang Belanja (<span class="cart-counter">0</span>)
+      </button>
+      <div class="text-center text-[10px] text-stone-400">
+        BumiTani &copy; 2026. Premium Enterprise Solution.
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SIDEBAR CART SYSTEM ================= -->
+  <div id="cart-sidebar" class="fixed top-0 right-0 bottom-0 w-96 max-w-full bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between">
+    <div class="p-6 flex flex-col h-full overflow-hidden">
+      <div class="flex items-center justify-between border-b border-stone-200 pb-5 flex-shrink-0">
+        <div class="flex items-center gap-2">
+          <i data-lucide="shopping-bag" class="w-5 h-5 text-forest-900"></i>
+          <span class="font-display font-bold text-lg text-stone-850">Keranjang Belanja</span>
+        </div>
+        <button id="cart-close-btn" class="p-2 rounded-full hover:bg-stone-100 text-stone-500 transition duration-200">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Items Container (Scrollable) -->
+      <div id="cart-items-container" class="flex-grow overflow-y-auto divide-y divide-stone-100 py-2">
+        <!-- Rendered Dynamically by JS -->
+      </div>
+
+      <!-- Cart Footer -->
+      <div class="border-t border-stone-200 pt-5 mt-auto flex-shrink-0">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-stone-500 font-medium">Subtotal Estimasi:</span>
+          <span id="cart-total-price" class="font-display font-extrabold text-stone-900 text-lg">Rp 0</span>
+        </div>
+        <p class="text-[11px] text-stone-400 mb-4 leading-normal">Pemesanan diproses langsung melalui WhatsApp. Tekan tombol di bawah untuk melanjutkan ke pengisian data alamat kirim.</p>
+        <button id="cart-checkout-btn" class="w-full bg-forest-900 hover:bg-forest-800 disabled:bg-stone-200 disabled:text-stone-400 disabled:cursor-not-allowed text-broken-100 py-3.5 rounded-lg font-semibold flex items-center justify-center gap-2.5 transition duration-200 shadow-md">
+          <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+          Lanjut ke Checkout
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ======================================================= -->
+  <!-- ======================== PAGES ======================== -->
+  <!-- ======================================================= -->
+
+  <main class="pt-20">
+
+    <!-- ==================== 1. HOME SECTION ==================== -->
+    <section id="home-section" class="page-section active">
+      <!-- Hero Section -->
+      <div class="relative overflow-hidden bg-broken-100 border-b border-stone-200/30 py-20 lg:py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="lg:col-span-7 flex flex-col items-start text-left">
+              <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sage-100 border border-sage-200/40 text-forest-900 font-semibold text-xs tracking-wider uppercase mb-6 shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-forest-900 animate-pulse"></span>
+                Mitra Pertanian Enterprise Terbaik
+              </div>
+              
+              <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-forest-900 leading-tight">
+                Membangun Kemakmuran <br class="hidden sm:inline">Pertanian Berkelanjutan
+              </h1>
+              
+              <p class="text-stone-600 mt-6 text-base sm:text-lg leading-relaxed max-w-xl">
+                BumiTani merupakan toko pertanian online terintegrasi yang menyuplai berbagai kebutuhan pertanian, perkebunan, perikanan, dan peternakan dengan kualitas bersertifikat pabrik resmi serta konsultasi gratis bagi seluruh petani Indonesia.
+              </p>
+              
+              <div class="flex flex-col sm:flex-row gap-4 mt-8 w-full sm:w-auto">
+                <a href="#products" data-tab="products" class="btn-primary bg-forest-900 hover:bg-forest-800 text-broken-100 text-center font-semibold px-8 py-4 rounded-lg text-sm shadow-sm transition">
+                  Jelajahi Katalog Produk
+                </a>
+                <a href="#profile" data-tab="profile" class="bg-white hover:bg-stone-50 text-stone-700 text-center font-semibold px-8 py-4 rounded-lg text-sm border border-stone-200 transition">
+                  Tentang Perusahaan
+                </a>
+              </div>
+            </div>
+
+            <!-- Modern Editorial Image Collage -->
+            <div class="lg:col-span-5 relative mt-8 lg:mt-0">
+              <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-lg border border-stone-200/50 bg-stone-100">
+                <img src="assets/Header-Profil.jpg" alt="Pertanian Modern BumiTani" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-forest-900/40 to-transparent"></div>
+                
+                <div class="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md p-5 rounded-xl border border-white/20 shadow-lg">
+                  <p class="text-xs font-semibold text-forest-900 uppercase tracking-wider">Konsultasi Gratis</p>
+                  <h4 class="font-display font-bold text-stone-900 text-sm mt-1 leading-snug">Konsultasikan kendala sawah & ternak Anda bersama ahli pertanian kami di lapangan secara cuma-cuma.</h4>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Core Value Propositions (Clean, Thin Icons, No Emojis) -->
+      <div class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-2xl mx-auto mb-16">
+            <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-stone-900">Mengapa Memilih BumiTani?</h2>
+            <p class="text-stone-500 text-sm sm:text-base mt-3">Kami menawarkan integrasi mutu, keaslian produk pabrikan, dan konsultasi profesional tanpa biaya tambahan.</p>
+          </div>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="p-6 bg-broken-100 rounded-xl border border-stone-200/20 shadow-sm flex flex-col items-start">
+              <div class="p-3 bg-white rounded-lg text-forest-900 border border-stone-200/30 mb-5 shadow-sm">
+                <i data-lucide="award" class="w-6 h-6 stroke-1.5"></i>
+              </div>
+              <h3 class="font-display font-bold text-stone-855 text-lg mb-2">Mutu & Kualitas Terjamin</h3>
+              <p class="text-stone-500 text-xs sm:text-sm leading-relaxed">Produk dijamin orisinalitasnya karena dipasok langsung dari produsen multinasional terkemuka.</p>
+            </div>
+
+            <div class="p-6 bg-broken-100 rounded-xl border border-stone-200/20 shadow-sm flex flex-col items-start">
+              <div class="p-3 bg-white rounded-lg text-forest-900 border border-stone-200/30 mb-5 shadow-sm">
+                <i data-lucide="message-square" class="w-6 h-6 stroke-1.5"></i>
+              </div>
+              <h3 class="font-display font-bold text-stone-855 text-lg mb-2">Konsultasi Gratis</h3>
+              <p class="text-stone-500 text-xs sm:text-sm leading-relaxed">Dapatkan konsultasi permasalahan budidaya secara gratis di toko offline kami maupun via chat WhatsApp.</p>
+            </div>
+
+            <div class="p-6 bg-broken-100 rounded-xl border border-stone-200/20 shadow-sm flex flex-col items-start">
+              <div class="p-3 bg-white rounded-lg text-forest-900 border border-stone-200/30 mb-5 shadow-sm">
+                <i data-lucide="wallet" class="w-6 h-6 stroke-1.5"></i>
+              </div>
+              <h3 class="font-display font-bold text-stone-855 text-lg mb-2">Harga Kompetitif</h3>
+              <p class="text-stone-500 text-xs sm:text-sm leading-relaxed">Kemitraan pabrik memungkinkan kami menyalurkan obat dan alat tani dengan harga terbaik di pasaran.</p>
+            </div>
+
+            <div class="p-6 bg-broken-100 rounded-xl border border-stone-200/20 shadow-sm flex flex-col items-start">
+              <div class="p-3 bg-white rounded-lg text-forest-900 border border-stone-200/30 mb-5 shadow-sm">
+                <i data-lucide="truck" class="w-6 h-6 stroke-1.5"></i>
+              </div>
+              <h3 class="font-display font-bold text-stone-855 text-lg mb-2">Distribusi Cepat</h3>
+              <p class="text-stone-500 text-xs sm:text-sm leading-relaxed">Mekanisme pemesanan WhatsApp yang instan dengan pilihan ekspedisi termurah dan tercepat ke alamat Anda.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured Products Showcase -->
+      <div class="py-20 bg-broken-100 border-t border-b border-stone-200/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-col sm:flex-row items-start sm:items-end justify-between mb-12">
+            <div>
+              <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-stone-900">Produk Unggulan Pilihan</h2>
+              <p class="text-stone-500 text-sm sm:text-base mt-2">Daftar produk dengan kepuasan pelanggan tertinggi di katalog BumiTani.</p>
+            </div>
+            <a href="#products" data-tab="products" class="mt-4 sm:mt-0 text-forest-900 hover:text-forest-750 font-semibold text-sm flex items-center gap-1 group transition">
+              Lihat Semua Produk
+              <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"></i>
+            </a>
+          </div>
+          
+          <div id="featured-products-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Dynamically Rendered by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Partner / Factory Brands -->
+      <div class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h3 class="text-xs font-bold tracking-wider uppercase text-stone-400 mb-8">Bekerja Sama Dengan Produsen Resmi & Multinasional</h3>
+          <div class="flex flex-wrap items-center justify-center gap-y-6 gap-x-12 opacity-75">
+            <span class="font-display font-bold text-stone-600 text-base sm:text-lg hover:text-forest-900 transition">YARA Indonesia</span>
+            <span class="font-display font-bold text-stone-600 text-base sm:text-lg hover:text-forest-900 transition">Meroke Tetap Jaya</span>
+            <span class="font-display font-bold text-stone-600 text-base sm:text-lg hover:text-forest-900 transition">Petrokimia Gresik</span>
+            <span class="font-display font-bold text-stone-600 text-base sm:text-lg hover:text-forest-900 transition">Syngenta</span>
+            <span class="font-display font-bold text-stone-600 text-base sm:text-lg hover:text-forest-900 transition">Bisi International</span>
+            <span class="font-display font-bold text-stone-600 text-base sm:text-lg hover:text-forest-900 transition">Bayer</span>
+            <span class="font-display font-bold text-stone-600 text-base sm:text-lg hover:text-forest-900 transition">BASF</span>
+            <span class="font-display font-bold text-stone-600 text-base sm:text-lg hover:text-forest-900 transition">FMC</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Premium Consultation CTA Banner -->
+      <div class="py-20 bg-forest-900 text-broken-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl">
+          <h2 class="font-display font-bold text-3xl sm:text-4xl leading-tight">Hadapi Kendala Hama atau Nutrisi Tanaman?</h2>
+          <p class="text-sage-100 text-base mt-4 leading-relaxed max-w-2xl mx-auto">Tim teknis lapangan kami siap membantu menganalisis permasalahan tanaman, tanah, maupun pakan ternak Anda. Dapatkan solusi rekomendasi produk yang tepat sasaran secara gratis.</p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <button id="home-wa-consult-btn" onclick="document.getElementById('floating-wa-btn').click()" class="bg-white hover:bg-stone-100 text-forest-900 font-bold px-8 py-3.5 rounded-lg text-sm transition shadow-md">
+              Hubungi Konsultan Sekarang
+            </button>
+            <a href="#faq" data-tab="faq" class="text-broken-100 hover:text-sage-100 font-semibold px-8 py-3.5 rounded-lg text-sm flex items-center justify-center gap-1 transition">
+              Pelajari Prosedur Pemesanan
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 2. PROFILE SECTION ==================== -->
+    <section id="profile-section" class="page-section">
+      <!-- Profile Header / Editorial Intro -->
+      <div class="bg-white py-16 sm:py-24 border-b border-stone-200/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="max-w-3xl">
+            <span class="text-xs font-bold tracking-widest text-forest-900 uppercase">Sekilas Tentang BumiTani</span>
+            <h1 class="font-display font-extrabold text-4xl sm:text-5xl text-stone-900 tracking-tight mt-3 leading-tight">
+              Menjadi Toko Pertanian Online Terpercaya untuk Ketahanan Pangan Nasional
+            </h1>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile Banner Image (Header-Profil.jpg) -->
+      <div class="w-full h-96 lg:h-[480px] bg-stone-100 overflow-hidden relative">
+        <img src="assets/Header-Profil.jpg" alt="BumiTani Corporate Banner" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-stone-900/10"></div>
+      </div>
+
+      <!-- Profile Detailed Content (from profile.txt) -->
+      <div class="py-20 bg-broken-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            
+            <div class="lg:col-span-8 flex flex-col gap-6 text-stone-750">
+              <h2 class="font-display font-extrabold text-2xl text-stone-900 border-b border-stone-300/40 pb-4 mb-2">Siapa Kami</h2>
+              
+              <p class="text-base leading-relaxed">
+                <span class="font-bold text-forest-900">BumiTani</span> merupakan toko online terintegrasi yang menyediakan produk-produk yang dibutuhkan untuk sektor pertanian, perikanan, perkebunan, dan peternakan di Indonesia. Kami mendistribusikan berbagai macam obat-obatan dan alat pertanian berstandar premium dengan mutu yang dijamin orisinal.
+              </p>
+              
+              <p class="text-base leading-relaxed">
+                Kami menjual beraneka ragam kebutuhan dasar tani seperti Bibit / Benih tanaman unggul, Nutrisi Tanaman premium, Pakan Ternak berenergi seimbang, Pestisida selektif (Fungisida, Insektisida, Herbisida, Akarisida, dll), aneka pupuk (pupuk daun, pupuk akar, pupuk ZA, pupuk NPK Yaramila, NPK Mutiara, dll), serta alat-alat pertanian modern dengan kualitas terjamin dan harga terjangkau.
+              </p>
+
+              <p class="text-base leading-relaxed">
+                Bukan hanya sekadar menjual obat dan alat pertanian terlengkap, saat ini kami juga telah bekerja sama resmi dengan berbagai pabrik dan produsen produk pertanian berskala nasional dan multinasional, antara lain: 
+                <span class="font-semibold text-stone-850">PT. Yara Indonesia, PT. Meroke Tetap Jaya, PT Petrokimia Gresik, Syngenta, PT. Bisi International Tbk, PT Multi Sarana Indotani, Dupont, Bayer, Nufarm, PT BASF Indonesia, FMC, dan lainnya.</span> 
+                Dengan rantai pasok langsung dari pabrik ini, kami tidak hanya menjamin kelengkapan produk melainkan juga mampu memberikan penawaran harga terbaik yang terjangkau bagi para petani kecil maupun skala korporat.
+              </p>
+            </div>
+
+            <div class="lg:col-span-4 bg-white p-8 rounded-xl border border-stone-200/50 shadow-sm flex flex-col gap-6">
+              <div>
+                <h3 class="font-display font-bold text-stone-900 text-lg border-b border-stone-100 pb-3">Konsultasi Tatap Muka</h3>
+                <p class="text-xs text-stone-500 mt-2.5 leading-relaxed">Dan yang pasti, bila Anda datang berkunjung langsung ke Toko Offline fisik kami, Anda juga berhak mendapatkan konsultasi gratis langsung dengan tim agronomi kami mengenai permasalahan pertanian, peternakan, maupun perikanan yang sedang Anda hadapi di lahan.</p>
+              </div>
+
+              <div class="border-t border-stone-100 pt-4">
+                <h4 class="text-xs font-semibold text-forest-900 uppercase tracking-wider mb-2">Nilai-Nilai Kami</h4>
+                <ul class="text-xs text-stone-600 flex flex-col gap-2.5">
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-forest-900 mt-1"></span>
+                    <span><strong>100% Produk Pabrikan Asli</strong> — Kerja sama dengan produsen resmi menjamin orisinalitas tanpa keraguan.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-forest-900 mt-1"></span>
+                    <span><strong>Aksesibilitas Petani</strong> — Mengupayakan agar BumiTani menjadi gerai terdekat yang mampu menyuplai semua kebutuhan petani secara cepat.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-forest-900 mt-1"></span>
+                    <span><strong>Edukasi Berkelanjutan</strong> — Memberikan penyuluhan dan diskusi agronomi gratis guna meningkatkan kuantitas panen nasional.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. PRODUCTS SECTION ==================== -->
+    <section id="products-section" class="page-section">
+      <div class="bg-white py-12 border-b border-stone-200/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div>
+              <span class="text-xs font-bold tracking-widest text-forest-900 uppercase">E-Commerce Modern</span>
+              <h1 class="font-display font-extrabold text-3xl text-stone-900 mt-1">Katalog Produk BumiTani</h1>
+            </div>
+            
+            <!-- Real-Time Search Bar -->
+            <div class="relative w-full md:w-80 flex-shrink-0">
+              <input type="text" id="catalog-search" placeholder="Cari nama produk..." class="w-full bg-broken-100 text-stone-800 text-sm pl-10 pr-4 py-3 rounded-lg border border-stone-200 focus:outline-none focus:ring-1 focus:ring-forest-900 focus:border-forest-900 transition shadow-sm">
+              <div class="absolute left-3.5 top-3.5 text-stone-400">
+                <i data-lucide="search" class="w-4 h-4"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Category Selector Sidebar -->
+          <div class="lg:col-span-3 lg:sticky lg:top-24 bg-white p-6 rounded-xl border border-stone-200/50 shadow-sm">
+            <h3 class="font-display font-bold text-stone-900 text-sm uppercase tracking-wider mb-4 pb-2 border-b border-stone-100 flex items-center gap-2">
+              <i data-lucide="filter" class="w-4 h-4 text-forest-900"></i>
+              Filter Kategori
+            </h3>
+            <div class="flex flex-wrap lg:flex-col gap-2">
+              <button data-filter="all" class="bg-forest-900 text-broken-100 text-xs font-semibold px-4 py-2.5 rounded-lg border border-forest-900 text-left transition w-full sm:w-auto lg:w-full">
+                Semua Produk
+              </button>
+              <button data-filter="bibit" class="bg-white text-stone-750 hover:border-stone-400 text-xs font-semibold px-4 py-2.5 rounded-lg border border-stone-200 text-left transition w-full sm:w-auto lg:w-full">
+                Bibit / Benih
+              </button>
+              <button data-filter="nutrisi" class="bg-white text-stone-750 hover:border-stone-400 text-xs font-semibold px-4 py-2.5 rounded-lg border border-stone-200 text-left transition w-full sm:w-auto lg:w-full">
+                Nutrisi
+              </button>
+              <button data-filter="pakan" class="bg-white text-stone-750 hover:border-stone-400 text-xs font-semibold px-4 py-2.5 rounded-lg border border-stone-200 text-left transition w-full sm:w-auto lg:w-full">
+                Pakan
+              </button>
+              <button data-filter="peralatan" class="bg-white text-stone-750 hover:border-stone-400 text-xs font-semibold px-4 py-2.5 rounded-lg border border-stone-200 text-left transition w-full sm:w-auto lg:w-full">
+                Peralatan
+              </button>
+              <button data-filter="pestisida" class="bg-white text-stone-750 hover:border-stone-400 text-xs font-semibold px-4 py-2.5 rounded-lg border border-stone-200 text-left transition w-full sm:w-auto lg:w-full">
+                Pestisida
+              </button>
+              <button data-filter="pupuk" class="bg-white text-stone-750 hover:border-stone-400 text-xs font-semibold px-4 py-2.5 rounded-lg border border-stone-200 text-left transition w-full sm:w-auto lg:w-full">
+                Pupuk
+              </button>
+            </div>
+            <div id="product-count-indicator" class="text-[10px] text-stone-400 font-semibold mt-6 block text-center lg:text-left">
+              Menampilkan 72 Produk
+            </div>
+          </div>
+
+          <!-- Product Catalog Grid -->
+          <div class="lg:col-span-9">
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <!-- Rendered Dynamically by script.js -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. FAQ SECTION ==================== -->
+    <section id="faq-section" class="page-section">
+      <div class="bg-white py-16 sm:py-24 border-b border-stone-200/40">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <span class="text-xs font-bold tracking-widest text-forest-900 uppercase">Pertanyaan Umum</span>
+          <h1 class="font-display font-extrabold text-3xl sm:text-4xl text-stone-900 tracking-tight mt-3">Frequently Asked Questions</h1>
+          <p class="text-stone-500 text-sm mt-3">Berikut adalah jawaban atas pertanyaan-pertanyaan umum dari pelanggan BumiTani.</p>
+        </div>
+      </div>
+
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="flex flex-col gap-4">
+          
+          <!-- Accordion 1 -->
+          <div class="bg-white rounded-xl border border-stone-200/50 overflow-hidden shadow-sm">
+            <button class="faq-trigger w-full text-left px-6 py-5 flex items-center justify-between text-stone-850 font-bold font-display text-sm sm:text-base hover:text-forest-900 transition" aria-expanded="false">
+              <span>Apakah BumiTani menyediakan konsultasi pertanian gratis?</span>
+              <i data-lucide="chevron-down" class="faq-icon w-4 h-4 text-stone-400 transition-transform duration-300"></i>
+            </button>
+            <div class="faq-content px-6 py-0 border-t border-stone-100/50 bg-stone-50/20 text-xs sm:text-sm text-stone-500 leading-relaxed">
+              Ya, BumiTani menyediakan layanan konsultasi gratis mengenai kendala pertanian, peternakan, dan perikanan. Layanan ini tersedia secara tatap muka gratis apabila Anda berkunjung langsung ke Toko Fisik Offline kami, maupun secara online dengan menekan tombol WhatsApp Konsultasi yang melayang di pojok kanan bawah website.
+            </div>
+          </div>
+
+          <!-- Accordion 2 -->
+          <div class="bg-white rounded-xl border border-stone-200/50 overflow-hidden shadow-sm">
+            <button class="faq-trigger w-full text-left px-6 py-5 flex items-center justify-between text-stone-850 font-bold font-display text-sm sm:text-base hover:text-forest-900 transition" aria-expanded="false">
+              <span>Bagaimana cara melakukan pemesanan dan checkout produk?</span>
+              <i data-lucide="chevron-down" class="faq-icon w-4 h-4 text-stone-400 transition-transform duration-300"></i>
+            </button>
+            <div class="faq-content px-6 py-0 border-t border-stone-100/50 bg-stone-50/20 text-xs sm:text-sm text-stone-500 leading-relaxed">
+              Kami menggunakan sistem checkout terintegrasi langsung ke WhatsApp untuk efisiensi transaksi. Caranya: pilih produk unggulan dari halaman Katalog Produk, tekan tombol 'Beli' untuk menambahkannya ke keranjang belanja, buka keranjang belanja Anda di pojok kanan atas, lalu klik 'Lanjut ke Checkout'. Centered Checkout Modal yang memuat detail data pengiriman Anda akan terbuka di tengah layar, dan Anda dapat menekan 'Kirim Pesanan ke WhatsApp' untuk langsung terhubung dengan Admin kami.
+            </div>
+          </div>
+
+          <!-- Accordion 3 -->
+          <div class="bg-white rounded-xl border border-stone-200/50 overflow-hidden shadow-sm">
+            <button class="faq-trigger w-full text-left px-6 py-5 flex items-center justify-between text-stone-850 font-bold font-display text-sm sm:text-base hover:text-forest-900 transition" aria-expanded="false">
+              <span>Apakah seluruh barang yang dipasarkan di BumiTani dijamin orisinal?</span>
+              <i data-lucide="chevron-down" class="faq-icon w-4 h-4 text-stone-400 transition-transform duration-300"></i>
+            </button>
+            <div class="faq-content px-6 py-0 border-t border-stone-100/50 bg-stone-50/20 text-xs sm:text-sm text-stone-500 leading-relaxed">
+              Tentu saja. BumiTani telah menjalin kerja sama resmi dengan produsen pupuk, pestisida, dan bibit ternama (seperti PT. Yara Indonesia, PT. Meroke Tetap Jaya, PT Petrokimia Gresik, Syngenta, PT. Bisi International Tbk, dll). Kami mendistribusikan produk resmi bersertifikat langsung dari pabrikan, sehingga keasliannya terjamin 100%.
+            </div>
+          </div>
+
+          <!-- Accordion 4 -->
+          <div class="bg-white rounded-xl border border-stone-200/50 overflow-hidden shadow-sm">
+            <button class="faq-trigger w-full text-left px-6 py-5 flex items-center justify-between text-stone-850 font-bold font-display text-sm sm:text-base hover:text-forest-900 transition" aria-expanded="false">
+              <span>Apakah BumiTani melayani pengiriman produk ke luar daerah?</span>
+              <i data-lucide="chevron-down" class="faq-icon w-4 h-4 text-stone-400 transition-transform duration-300"></i>
+            </button>
+            <div class="faq-content px-6 py-0 border-t border-stone-100/50 bg-stone-50/20 text-xs sm:text-sm text-stone-500 leading-relaxed">
+              Ya, kami melayani pengiriman produk untuk seluruh Indonesia. Kami bekerja sama dengan banyak ekspedisi kargo tepercaya untuk pengiriman volume besar (seperti pupuk karungan atau pakan) maupun ekspedisi reguler untuk paket kecil dengan tarif paling kompetitif.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 5. CONTACT SECTION ==================== -->
+    <section id="contact-section" class="page-section">
+      <div class="bg-white py-16 sm:py-24 border-b border-stone-200/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl">
+          <span class="text-xs font-bold tracking-widest text-forest-900 uppercase">Hubungi Kami</span>
+          <h1 class="font-display font-extrabold text-3xl sm:text-4xl text-stone-900 tracking-tight mt-3">Hubungi Tim Layanan BumiTani</h1>
+          <p class="text-stone-500 text-sm mt-3">Silakan kirimkan pertanyaan, pesanan kargo volume besar, atau keluhan Anda melalui form kontak berikut.</p>
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 bg-broken-100">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          
+          <!-- Contact Info Column -->
+          <div class="lg:col-span-5 flex flex-col gap-8">
+            <div>
+              <h3 class="font-display font-bold text-stone-900 text-xl mb-4">Informasi Kontak</h3>
+              <p class="text-stone-500 text-xs sm:text-sm leading-relaxed">Hubungi admin resmi atau datang langsung ke alamat kantor/gudang pusat kami untuk berkonsultasi mengenai budidaya pertanian Anda secara langsung.</p>
+            </div>
+            
+            <div class="flex flex-col gap-5">
+              <div class="flex items-start gap-4">
+                <div class="p-2.5 bg-white border border-stone-250/20 rounded-lg text-forest-900 shadow-sm flex-shrink-0">
+                  <i data-lucide="map-pin" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h4 class="text-xs font-bold text-stone-700 uppercase">Kantor & Toko Offline</h4>
+                  <p class="text-xs sm:text-sm text-stone-500 mt-1 leading-relaxed">Jl. Raya Pertanian Utama No. 88, Blok Sawah Barat, Jawa Barat, Indonesia</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="p-2.5 bg-white border border-stone-250/20 rounded-lg text-forest-900 shadow-sm flex-shrink-0">
+                  <i data-lucide="phone" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h4 class="text-xs font-bold text-stone-700 uppercase">Telepon / WhatsApp Admin</h4>
+                  <p class="text-xs sm:text-sm text-stone-500 mt-1 leading-relaxed">085795185561</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="p-2.5 bg-white border border-stone-250/20 rounded-lg text-forest-900 shadow-sm flex-shrink-0">
+                  <i data-lucide="mail" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h4 class="text-xs font-bold text-stone-700 uppercase">Surel Elektronik (Email)</h4>
+                  <p class="text-xs sm:text-sm text-stone-500 mt-1 leading-relaxed">info@bumitani.com</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Styled Map Placeholder -->
+            <div class="w-full aspect-[16/10] rounded-xl border border-stone-200/50 bg-stone-200/40 flex items-center justify-center text-center p-6 shadow-sm overflow-hidden relative group">
+              <div class="flex flex-col items-center gap-2 text-stone-400 group-hover:text-forest-900 transition duration-300">
+                <i data-lucide="map" class="w-8 h-8 stroke-1"></i>
+                <span class="text-xs font-semibold">Tampilan Peta Lokasi Kantor Pusat</span>
+              </div>
+              <div class="absolute inset-0 bg-stone-850/5 pointer-events-none"></div>
+            </div>
+          </div>
+
+          <!-- Contact Form Column -->
+          <div class="lg:col-span-7 bg-white p-8 rounded-xl border border-stone-200/50 shadow-sm">
+            <h3 class="font-display font-bold text-stone-900 text-lg mb-6">Kirim Pesanan / Pertanyaan Direct</h3>
+            
+            <form id="contact-form" class="flex flex-col gap-5">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div class="flex flex-col gap-1.5">
+                  <label for="contact-name" class="text-xs font-bold text-stone-600 uppercase">Nama Lengkap</label>
+                  <input type="text" id="contact-name" placeholder="Masukkan nama Anda..." class="w-full bg-broken-100 text-sm px-4 py-3 rounded-lg border border-stone-200 focus:outline-none focus:ring-1 focus:ring-forest-900 focus:border-forest-900 transition">
+                </div>
+                
+                <div class="flex flex-col gap-1.5">
+                  <label for="contact-email" class="text-xs font-bold text-stone-600 uppercase">Alamat Email</label>
+                  <input type="email" id="contact-email" placeholder="Masukkan email aktif..." class="w-full bg-broken-100 text-sm px-4 py-3 rounded-lg border border-stone-200 focus:outline-none focus:ring-1 focus:ring-forest-900 focus:border-forest-900 transition">
+                </div>
+              </div>
+
+              <div class="flex flex-col gap-1.5">
+                <label for="contact-message" class="text-xs font-bold text-stone-600 uppercase">Isi Pesan Anda</label>
+                <textarea id="contact-message" rows="5" placeholder="Tuliskan kendala, pesanan kuantitas besar, atau keluhan Anda di sini secara detail..." class="w-full bg-broken-100 text-sm px-4 py-3 rounded-lg border border-stone-200 focus:outline-none focus:ring-1 focus:ring-forest-900 focus:border-forest-900 transition resize-none"></textarea>
+              </div>
+
+              <button type="submit" class="bg-forest-900 hover:bg-forest-800 text-broken-100 text-sm font-semibold py-3.5 rounded-lg transition duration-200 shadow-sm flex items-center justify-center gap-2">
+                <i data-lucide="send" class="w-4 h-4"></i>
+                Kirim Pesanan / Pertanyaan Anda
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER SECTION ================= -->
+  <footer class="bg-stone-900 text-broken-200 border-t border-stone-800 pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10 border-b border-stone-800 pb-12">
+        
+        <!-- Corporate Brand Summary -->
+        <div class="md:col-span-5 flex flex-col gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded bg-broken-100 flex items-center justify-center text-forest-900 font-display font-extrabold text-base shadow-sm">
+              BT
+            </div>
+            <span class="font-display font-extrabold text-xl tracking-tight text-white">BumiTani</span>
+          </div>
+          <p class="text-xs sm:text-sm text-stone-400 leading-relaxed max-w-sm">
+            Distributor online premium penyedia obat, nutrisi, pakan, bibit berkualitas tinggi, dan peralatan modern untuk menopang ketahanan pangan dan menyukseskan budidaya pertanian Indonesia.
+          </p>
+          <div class="flex items-center gap-4 text-stone-400 mt-2">
+            <span class="text-xs hover:text-white transition duration-200 cursor-pointer">Facebook</span>
+            <span class="text-xs hover:text-white transition duration-200 cursor-pointer">Instagram</span>
+            <span class="text-xs hover:text-white transition duration-200 cursor-pointer">LinkedIn</span>
+            <span class="text-xs hover:text-white transition duration-200 cursor-pointer">YouTube</span>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="md:col-span-3 flex flex-col gap-4">
+          <h4 class="text-xs font-bold text-white uppercase tracking-wider">Halaman Situs</h4>
+          <nav class="flex flex-col gap-2.5 text-xs text-stone-400">
+            <a href="#home" data-tab="home" class="hover:text-white transition">Halaman Utama</a>
+            <a href="#profile" data-tab="profile" class="hover:text-white transition">Profil Perusahaan</a>
+            <a href="#products" data-tab="products" class="hover:text-white transition">Katalog Belanja</a>
+            <a href="#faq" data-tab="faq" class="hover:text-white transition">FAQ Pelanggan</a>
+            <a href="#contact" data-tab="contact" class="hover:text-white transition">Kontak Layanan</a>
+          </nav>
+        </div>
+
+        <!-- Catalog Shortlinks -->
+        <div class="md:col-span-4 flex flex-col gap-4">
+          <h4 class="text-xs font-bold text-white uppercase tracking-wider">Kategori Produk</h4>
+          <div class="grid grid-cols-2 gap-2 text-xs text-stone-400">
+            <a href="#products" onclick="switchTab('products'); activeCategoryFilter='bibit'; renderCatalog();" class="hover:text-white transition">Bibit & Benih</a>
+            <a href="#products" onclick="switchTab('products'); activeCategoryFilter='nutrisi'; renderCatalog();" class="hover:text-white transition">Nutrisi Hewan</a>
+            <a href="#products" onclick="switchTab('products'); activeCategoryFilter='pakan'; renderCatalog();" class="hover:text-white transition">Pakan Ternak</a>
+            <a href="#products" onclick="switchTab('products'); activeCategoryFilter='peralatan'; renderCatalog();" class="hover:text-white transition">Peralatan Tani</a>
+            <a href="#products" onclick="switchTab('products'); activeCategoryFilter='pestisida'; renderCatalog();" class="hover:text-white transition">Pestisida Hama</a>
+            <a href="#products" onclick="switchTab('products'); activeCategoryFilter='pupuk'; renderCatalog();" class="hover:text-white transition">Pupuk Tanaman</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-stone-500 text-xs">
+        <p>Copyright &copy; 2026 BumiTani. All rights reserved.</p>
+        <div class="flex items-center gap-6">
+          <span class="hover:text-stone-400 transition cursor-pointer">Syarat & Ketentuan</span>
+          <span class="hover:text-stone-400 transition cursor-pointer">Kebijakan Privasi</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= FLOATING WHATSAPP CHAT BUTTON ================= -->
+  <button id="floating-wa-btn" class="fixed bottom-6 right-6 z-40 bg-emerald-600 hover:bg-emerald-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-105 duration-300 focus:outline-none" aria-label="Konsultasi WhatsApp">
+    <i data-lucide="message-circle" class="w-6 h-6 fill-current"></i>
+  </button>
+
+  <!-- ================= PRODUCT DETAIL MODAL ================= -->
+  <div id="product-detail-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
+    <!-- Backdrop -->
+    <div id="product-detail-backdrop" class="absolute inset-0 bg-stone-900/60 backdrop-blur-sm"></div>
+    
+    <!-- Content container -->
+    <div class="relative bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-stone-200/50 transform scale-95 transition-all duration-300 flex flex-col md:flex-row z-10">
+      
+      <!-- Close button -->
+      <button id="modal-close-btn" class="absolute top-4 right-4 z-10 p-2 bg-white/90 backdrop-blur-sm rounded-full text-stone-500 hover:text-stone-800 border border-stone-200/50 shadow-sm transition focus:outline-none">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+      
+      <!-- Image side -->
+      <div class="w-full md:w-1/2 bg-stone-100 aspect-square md:aspect-auto md:h-auto overflow-hidden">
+        <img id="modal-product-image" src="" alt="" class="w-full h-full object-cover">
+      </div>
+      
+      <!-- Content side -->
+      <div class="w-full md:w-1/2 p-6 md:p-8 flex flex-col justify-between">
+        <div>
+          <span id="modal-product-category" class="bg-sage-100 text-forest-900 text-[10px] tracking-widest uppercase font-bold px-2.5 py-1 rounded-full border border-stone-200/20"></span>
+          <h2 id="modal-product-name" class="font-display font-extrabold text-stone-900 text-xl md:text-2xl mt-4 leading-tight"></h2>
+          
+          <div class="flex items-center gap-1.5 mt-2 mb-4">
+            <div class="flex text-amber-500 items-center">
+              <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+            </div>
+            <span id="modal-product-rating" class="text-xs font-semibold text-stone-750"></span>
+            <span id="modal-product-stock" class="text-xs text-stone-400 ml-4 font-semibold"></span>
+          </div>
+          
+          <div id="modal-product-description" class="text-xs sm:text-sm text-stone-500 leading-relaxed max-h-52 overflow-y-auto pr-1 whitespace-pre-line"></div>
+        </div>
+        
+        <div class="mt-6 pt-4 border-t border-stone-100">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-stone-400 text-xs font-bold uppercase">Harga</span>
+            <span id="modal-product-price" class="font-display font-extrabold text-stone-900 text-xl"></span>
+          </div>
+          <button id="modal-buy-btn" class="w-full bg-forest-900 hover:bg-forest-800 text-broken-100 text-sm font-semibold py-3.5 rounded-lg flex items-center justify-center gap-2 transition duration-300 shadow-md">
+            <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+            Tambah ke Keranjang
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- ================= CENTERED CHECKOUT MODAL ================= -->
+  <div id="checkout-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
+    <!-- Backdrop -->
+    <div id="checkout-backdrop" class="absolute inset-0 bg-stone-900/60 backdrop-blur-sm"></div>
+    
+    <!-- Content Card -->
+    <div class="relative bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-stone-200/50 transform scale-95 transition-all duration-300 z-10 flex flex-col p-6 sm:p-8">
+      
+      <!-- Close button -->
+      <button id="checkout-close-btn" class="absolute top-4 right-4 p-2 rounded-full text-stone-500 hover:text-stone-800 hover:bg-stone-100 transition focus:outline-none">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+      
+      <div class="flex items-center gap-2.5 border-b border-stone-100 pb-4 mb-5">
+        <div class="p-2 bg-sage-100 text-forest-900 rounded-lg">
+          <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <h3 class="font-display font-extrabold text-lg text-stone-900">Konfirmasi Pemesanan</h3>
+          <p class="text-xs text-stone-400">Silakan lengkapi data pengiriman Anda</p>
+        </div>
+      </div>
+      
+      <!-- Order Summary List inside Checkout Modal -->
+      <div class="mb-5">
+        <h4 class="text-xs font-bold text-stone-700 uppercase tracking-wider mb-2.5">Ringkasan Pesanan</h4>
+        <div id="checkout-summary-list" class="max-h-36 overflow-y-auto border border-stone-200/60 rounded-lg p-3 bg-stone-50/50 divide-y divide-stone-100/60 text-xs text-stone-600 flex flex-col gap-1.5">
+          <!-- Populated dynamically by JS -->
+        </div>
+        <div class="flex items-center justify-between mt-3 px-1 text-sm font-semibold text-stone-900">
+          <span>Total Belanja:</span>
+          <span id="checkout-total-price" class="font-display font-extrabold text-forest-900 text-base"></span>
+        </div>
+      </div>
+      
+      <!-- Shipping Details Form -->
+      <div class="flex flex-col gap-4 mb-6">
+        <h4 class="text-xs font-bold text-stone-700 uppercase tracking-wider">Data Penerima & Alamat Kirim</h4>
+        <div class="flex flex-col gap-1.5">
+          <label for="checkout-name" class="text-[10px] font-bold text-stone-500 uppercase">Nama Lengkap Penerima</label>
+          <input type="text" id="checkout-name" placeholder="Nama lengkap penerima..." class="w-full bg-broken-100 text-stone-850 text-xs px-4 py-3 rounded-lg border border-stone-200 focus:outline-none focus:ring-1 focus:ring-forest-900 focus:border-forest-900 transition">
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <label for="checkout-address" class="text-[10px] font-bold text-stone-500 uppercase">Alamat Lengkap Pengiriman</label>
+          <textarea id="checkout-address" rows="3" placeholder="Nama jalan, nomor rumah, RT/RW, kelurahan, kecamatan, kota/kabupaten, kode pos..." class="w-full bg-broken-100 text-stone-855 text-xs px-4 py-3 rounded-lg border border-stone-200 focus:outline-none focus:ring-1 focus:ring-forest-900 focus:border-forest-900 transition resize-none"></textarea>
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <label for="checkout-notes" class="text-[10px] font-bold text-stone-500 uppercase">Catatan Tambahan (Opsional)</label>
+          <input type="text" id="checkout-notes" placeholder="Catatan opsional..." class="w-full bg-broken-100 text-stone-850 text-xs px-4 py-3 rounded-lg border border-stone-200 focus:outline-none focus:ring-1 focus:ring-forest-900 focus:border-forest-900 transition">
+        </div>
+      </div>
+      
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row gap-3 pt-4 border-t border-stone-100">
+        <button id="checkout-cancel-btn" class="w-full sm:w-1/3 bg-white hover:bg-stone-50 text-stone-700 text-xs font-semibold py-3.5 rounded-lg border border-stone-200 transition">
+          Batal
+        </button>
+        <button id="checkout-submit-btn" class="w-full sm:w-2/3 bg-forest-900 hover:bg-forest-800 text-broken-100 text-xs font-semibold py-3.5 rounded-lg flex items-center justify-center gap-2.5 transition duration-300 shadow-md">
+          <i data-lucide="send" class="w-4 h-4"></i>
+          Kirim ke WhatsApp
+        </button>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- ================= TOAST CONTAINER PLACEHOLDER ================= -->
+  <div id="toast-container" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>
