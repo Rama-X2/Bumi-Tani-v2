@@ -54,7 +54,7 @@ const PRODUCTS = [
     image: "products/bibit/5.jpg",
     stock: 60,
     rating: 4.8,
-    description: "Sangat adaptif, dapat tumbuh hampir disemua lokasi. Tanamannya tegap berdaun lebar dan berwarna hijau cerah. Pembungaan agak lambat, umur panen sekitar 30 hari. Dapat ditanam sepanjang tahun dengan jarak tanam 25 x 20cm. Toleran terhadap penyakit jamur, Cocok untuk berbagai macam masakan dan sangat enak rasanya."
+    description: "Sangat adaptif, dapat tumbuh hampir disemua lokasi. Tanamannya tegap berdaun lebar and berwarna hijau cerah. Pembungaan agak lambat, umur panen sekitar 30 hari. Dapat ditanam sepanjang tahun dengan jarak tanam 25 x 20cm. Toleran terhadap penyakit jamur, Cocok untuk berbagai macam masakan dan sangat enak rasanya."
   },
   {
     id: "bibit-6",
@@ -186,7 +186,7 @@ const PRODUCTS = [
     image: "products/nutrisi/6.jpg",
     stock: 120,
     rating: 4.8,
-    description: "Menambah daya tahan tubuh dan mencegah stress pada waktu sebelum dan sesudah vaksinasi, setelah potong paruh, pindah kandang, penggantian ransum, cuaca yang buruk dan masa rontok bulu.\nMencegah kekurangan vitamin pada ayam terutama jika terdapat gangguan pertumbuhan, penurunan produksi telur dan gangguan pertumbuhan bulu.\nMempercepat pemulihan kesehatan setelah sakit dan sesudah pengobatan dengan antibiotik."
+    description: "Menambah daya tahan tubuh and mencegah stress pada waktu sebelum dan sesudah vaksinasi, setelah potong paruh, pindah kandang, penggantian ransum, cuaca yang buruk dan masa rontok bulu.\nMencegah kekurangan vitamin pada ayam terutama jika terdapat gangguan pertumbuhan, penurunan produksi telur dan gangguan pertumbuhan bulu.\nMempercepat pemulihan kesehatan setelah sakit dan sesudah pengobatan dengan antibiotik."
   },
   {
     id: "nutrisi-7",
@@ -216,7 +216,7 @@ const PRODUCTS = [
     image: "products/nutrisi/9.jpg",
     stock: 200,
     rating: 4.7,
-    description: "Mempercepat pertumbuhan\nMencegah kekurangan vitamin\nMengatasi stres\nMengurangi angka kematian pada anak ayam."
+    description: "Mempercepat pertumbuhan\nMencegah kekurangan vitamin\nMngatasi stres\nMengurangi angka kematian pada anak ayam."
   },
   {
     id: "nutrisi-10",
@@ -634,7 +634,7 @@ const PRODUCTS = [
     image: "products/pupuk/2.jpg",
     stock: 20,
     rating: 4.7,
-    description: "Spesifikasi MerokeMOP®\nKalium Oksida (K2O) 60%\n\n(Fungsi Unsur Hara Pupuk MerokeMOP®\nFungsi dari hara Kalium (K) ini adalah untuk kekuatan batang, transportasi gula (buah lebih manis), kualitas buah (lebih besar, lebih berat), tahan stres kekeringan (karena mengatur kerja stomata daun), tahan penyakit, transportasi asamilat dan kerja enzim.)\n\nKeuntungan:\nDengan memakai pupuk MerokeMOP®, tanaman akan lebih kuat, tahan stres lingkungan, toleran terhadap penyakit dan kualitas buah (warna kulit buah, warna daging buah, berat, besar, manis dan daya simpan buah) yang dihasilkan lebih baik.\nPemakaian Pupuk MerokeMOP® sebaiknya pada awal pertumbuhan atau sebagai pupuk dasar dan tahap pembesaran dan pematangan buah.\n\nGejala Kekurangan Unsur hara Kalium (K):\nPertumbuhan tanaman tidak kuat, daun tipis dan lemah.\nDaun tua menguning di mulai dari tepi daun.\nPada tanaman Kelapa Sawit, daun menunjukkan gejala bintik-bintik berwarna oranye tembus pandang dan kadar minyak pada buah berkurang.\nBuah mengecil dan pematangannya tidak sempurna. Warna kulit buah kusam, warna isi buah pucat dan rasa buah menjadi masam."
+    description: "Spesifikasi MerokeMOP®\nKalium Oksida (K2O) 60%\n\n(Fungsi Unsur Hara Pupuk MerokeMOP®\nFungsi dari hara Kalium (K) ini adalah untuk kekuatan batang, transportasi gula (buah lebih manis), kualitas buah (lebih besar, lebih berat), tahan stres kekeringan (karena mengatur kerja stomata daun), tahan penyakit, transportasi asamilat dan kerja enzim.)\n\nKeuntungan:\nDengan memakai pupuk MerokeMOP®, tanaman akan lebih kuat, tahan stres lingkungan, toleran terhadap penyakit dan kualitas buah (warna kulit buah, warna daging buah, berat, besar, manis dan daya simpan buah) yang dihasilkan lebih baik.\nPemakaian Pupuk MerokeMOP® sebaiknya pada awal pertumbuhan atau sebagai pupuk dasar dan tahap pembesaran dan pematangan buah.\n\nGejala Kekurangan Unsur hara Kalium (K):\nPertumbuhan tanaman tidak kuat, daun tipis and lemah.\nDaun tua menguning di mulai dari tepi daun.\nPada tanaman Kelapa Sawit, daun menunjukkan gejala bintik-bintik berwarna oranye tembus pandang dan kadar minyak pada buah berkurang.\nBuah mengecil dan pematangannya tidak sempurna. Warna kulit buah kusam, warna isi buah pucat dan rasa buah menjadi masam."
   },
   {
     id: "pupuk-3",
@@ -724,7 +724,7 @@ const PRODUCTS = [
     image: "products/pupuk/11.jpg",
     stock: 24,
     rating: 4.7,
-    description: "Spesifikasi SuburKali Butir®\nKalium Oksida (K2O) 30 %\nMagnesium Oksida (MgO) 10 %\nSulfur (S) 17 %\n\n(SuburKali Butir® merupakan pupuk majemuk dengan kandungan seimbang tiga unsur hara: Kalium, Magnesium dan Sulfur yang cocok untuk memacu pertumbuhan dan meningkatkan kualitas hasil produksi.\n\nPupuk SuburKali Butir® adalah pupuk majemuk pemberi unsur S tinggi yang sangat cocok untuk tanaman keluarga Crustacea (Kubis, Brokoli), dan bawang-bawangan (Bawang Merah, Bawang Prei) serta tanaman lainnya yang menghasilkan minyak atsiri.\n\nPupuk SuburKali Butir® merupakan pupuk yang ideal sebagai pelengkap unsur N dan P dalam bentuk pupuk tunggal maupun majemuk.\n\nPupuk SuburKali Butir® merupakan produk alami K, Mg dan S, cocok untuk tanaman yang sensitif terhadap Klor seperti Kentang, Nenas, Jeruk, Cabe, Tomat, Kubis, Anggur dan Bawang Merah.\nKarakteristik istimewanya adalah kandungan Klor yang rendah (Bebas Klor),mudah larut dalam air dan dapat langsung diserap oleh tanaman.\n\nKandungan rasio Kalium, Magnesium, Sulfur yang seimbang dapat meningkatkan fungsi enzim, sintesa protein dan pembentukan umbi sehingga hasil panen dan kualitas meningkat serta memperkaya rasa dan warna.\n\nDosis dan frekuensi pemupukan dapat disesuaikan dengan tingkat kesuburan dan kondisi tanah, pertumbuhan dan produktivitas tanaman serta varietas tanaman yang digunakan.\n\nPerlu diberikan Dolomit/Kapur Pertanian sebanyak 2-4 kg/meter bedeng (bila pH<5) dan pupuk kandang/bahan organik sebanyak 2-4 kg/meter bedeng.)"
+    description: "Spesifikasi SuburKali Butir®\nKalium Oksida (K2O) 30 %\nMagnesium Oksida (MgO) 10 %\nSulfur (S) 17 %\n\n(SuburKali Butir® merupakan pupuk majemuk dengan kandungan seimbang tiga unsur hara: Kalium, Magnesium dan Sulfur yang cocok untuk memacu pertumbuhan dan meningkatkan kualitas hasil produksi.\n\nPupuk SuburKali Butir® adalah pupuk majemuk pemberi unsur S tinggi yang sangat cocok untuk tanaman keluarga Crustacea (Kubis, Brokoli), dan bawang-bawangan (Bawang Merah, Bawang Prei) serta tanaman lainnya yang menghasilkan minyak atsiri.\n\nPupuk SuburKali Butir® merupakan pupuk yang ideal sebagai pelengkap unsur N and P dalam bentuk pupuk tunggal maupun majemuk.\n\nPupuk SuburKali Butir® merupakan produk alami K, Mg dan S, cocok untuk tanaman yang sensitif terhadap Klor seperti Kentang, Nenas, Jeruk, Cabe, Tomat, Kubis, Anggur dan Bawang Merah.\nKarakteristik istimewanya adalah kandungan Klor yang rendah (Bebas Klor),mudah larut dalam air dan dapat langsung diserap oleh tanaman.\n\nKandungan rasio Kalium, Magnesium, Sulfur yang seimbang dapat meningkatkan fungsi enzim, sintesa protein dan pembentukan umbi sehingga hasil panen dan kualitas meningkat serta memperkaya rasa dan warna.\n\nDosis dan frekuensi pemupukan dapat disesuaikan dengan tingkat kesuburan dan kondisi tanah, pertumbuhan dan produktivitas tanaman serta varietas tanaman yang digunakan.\n\nPerlu diberikan Dolomit/Kapur Pertanian sebanyak 2-4 kg/meter bedeng (bila pH<5) dan pupuk kandang/bahan organik sebanyak 2-4 kg/meter bedeng.)"
   },
   {
     id: "pupuk-12",
@@ -820,6 +820,7 @@ function initMobileMenu() {
   }
 }
 
+// Close Mobile Drawer Menu
 function closeMobileMenu() {
   const drawer = document.getElementById("mobile-menu-drawer");
   const overlay = document.getElementById("sidebar-overlay");
@@ -953,7 +954,8 @@ function showToast(message) {
   }
 
   const toast = document.createElement("div");
-  toast.className = "bg-forest-900 text-broken-100 text-sm font-medium px-5 py-3 rounded-full shadow-lg flex items-center gap-2 animate-bounce-short transition-all duration-300 opacity-0 transform translate-y-2";
+  // FIXED button text color visibility (uses text-white directly)
+  toast.className = "bg-forest-900 text-white text-sm font-medium px-5 py-3 rounded-full shadow-lg flex items-center gap-2 animate-bounce-short transition-all duration-300 opacity-0 transform translate-y-2";
   toast.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-sage-400"></span> ${message}`;
   
   container.appendChild(toast);
@@ -1011,7 +1013,7 @@ function renderCart() {
           <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100?text=Produk'">
         </div>
         <div class="flex-grow min-w-0">
-          <h4 class="font-semibold text-stone-850 text-sm truncate leading-tight hover:text-forest-800 transition cursor-pointer" onclick="openProductDetail('${item.id}')">${item.name}</h4>
+          <h4 class="font-semibold text-stone-855 text-sm truncate leading-tight hover:text-forest-800 transition cursor-pointer" onclick="openProductDetail('${item.id}')">${item.name}</h4>
           <span class="text-xs text-stone-500 block mt-0.5">${formatRupiah(item.price)} / pcs</span>
           
           <div class="flex items-center justify-between mt-3">
@@ -1024,7 +1026,7 @@ function renderCart() {
                 <i data-lucide="plus" class="w-3.5 h-3.5"></i>
               </button>
             </div>
-            <button onclick="removeFromCart('${item.id}')" class="text-xs text-red-650 hover:text-red-800 hover:underline flex items-center gap-1">
+            <button onclick="removeFromCart('${item.id}')" class="text-xs text-red-655 hover:text-red-800 hover:underline flex items-center gap-1">
               <i data-lucide="trash-2" class="w-3 h-3"></i> Hapus
             </button>
           </div>
@@ -1034,6 +1036,10 @@ function renderCart() {
   }).join("");
 
   totalContainer.textContent = formatRupiah(totalPrice);
+  // FIXED button text color visibility (uses text-white directly)
+  if (checkoutBtn) {
+    checkoutBtn.className = "w-full bg-forest-900 hover:bg-forest-800 disabled:bg-stone-200 disabled:text-stone-400 disabled:cursor-not-allowed text-white py-3.5 rounded-lg font-semibold flex items-center justify-center gap-2.5 transition duration-200 shadow-md";
+  }
   lucide.createIcons();
 }
 
@@ -1055,9 +1061,9 @@ function openCheckoutModal() {
     const itemTotal = item.price * item.quantity;
     totalPrice += itemTotal;
     return `
-      <div class="flex items-center justify-between py-1.5 text-stone-700">
+      <div class="flex items-center justify-between py-1.5 text-stone-700 font-medium">
         <span class="truncate max-w-[280px]">${item.name} <span class="text-stone-400 font-semibold">x${item.quantity}</span></span>
-        <span class="font-medium">${formatRupiah(itemTotal)}</span>
+        <span class="font-semibold">${formatRupiah(itemTotal)}</span>
       </div>
     `;
   }).join("");
@@ -1088,7 +1094,7 @@ function closeCheckoutModal() {
   document.body.classList.remove("overflow-hidden");
 }
 
-// Generate WhatsApp Redirect Link with Centered Form details
+// Generate WhatsApp Redirect Link with Centered Form details & Beautiful Separator
 function handleCheckout() {
   if (cart.length === 0) return;
 
@@ -1109,8 +1115,9 @@ function handleCheckout() {
 
   const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
-  // Construct message
-  const messageText = `Halo admin, saya ingin memesan:\n\n${orderDetails}\n\nTotal: ${formatRupiah(total)}\n\nNama: ${shippingName}\nAlamat: ${shippingAddress}\nCatatan: ${shippingNotes || "-"}`;
+  // FIXED: Added a clear separator line (━━━━━━━━━━━━━━━━━━) between products list and delivery details as requested
+  const separator = "\n\n━━━━━━━━━━━━━━━━━━\n\n";
+  const messageText = `Halo admin, saya ingin memesan:\n\n${orderDetails}\n\nTotal: ${formatRupiah(total)}${separator}Detail Pengiriman:\n-------------------\n- Nama: ${shippingName}\n- Alamat: ${shippingAddress}\n- Catatan: ${shippingNotes || "-"}`;
   
   const encodedText = encodeURIComponent(messageText);
   const waUrl = `https://wa.me/62${ADMIN_WHATSAPP.substring(1)}?text=${encodedText}`;
@@ -1286,7 +1293,8 @@ function renderCatalog() {
             <span class="font-display font-extrabold text-stone-900 text-base">
               ${formatRupiah(product.price)}
             </span>
-            <button onclick="event.stopPropagation(); addToCart('${product.id}')" class="bg-forest-900 hover:bg-forest-800 text-broken-100 text-xs font-semibold px-3 py-2 rounded-lg flex items-center gap-1.5 transition duration-300 shadow-sm">
+            <!-- FIXED button text color visibility (uses text-white directly) -->
+            <button onclick="event.stopPropagation(); addToCart('${product.id}')" class="bg-forest-900 hover:bg-forest-800 text-white text-xs font-semibold px-3 py-2 rounded-lg flex items-center gap-1.5 transition duration-300 shadow-sm">
               <i data-lucide="shopping-cart" class="w-3.5 h-3.5"></i>
               Beli
             </button>
@@ -1315,7 +1323,7 @@ function initCatalogFilters() {
       });
       
       btn.classList.remove("bg-white", "text-stone-700", "border-stone-200", "hover:border-stone-400");
-      btn.classList.add("bg-forest-900", "text-broken-100", "border-forest-900");
+      btn.classList.add("bg-forest-900", "text-white", "border-forest-900");
       
       renderCatalog();
     });
@@ -1365,7 +1373,8 @@ function renderFeaturedProducts() {
             <span class="font-display font-extrabold text-stone-900 text-sm md:text-base">
               ${formatRupiah(product.price)}
             </span>
-            <button onclick="event.stopPropagation(); addToCart('${product.id}')" class="bg-forest-900 hover:bg-forest-800 text-broken-100 text-xs font-semibold px-3 py-1.5 rounded-lg flex items-center gap-1 transition duration-300 shadow-sm">
+            <!-- FIXED button text color visibility (uses text-white directly) -->
+            <button onclick="event.stopPropagation(); addToCart('${product.id}')" class="bg-forest-900 hover:bg-forest-800 text-white text-xs font-semibold px-3 py-1.5 rounded-lg flex items-center gap-1 transition duration-300 shadow-sm">
               Tambah
             </button>
           </div>
@@ -1377,7 +1386,7 @@ function renderFeaturedProducts() {
   lucide.createIcons();
 }
 
-// Contact Form Handler
+// Contact Form Handler & Real WhatsApp Redirection (Not simulated!)
 function initContactForm() {
   const form = document.getElementById("contact-form");
   if (form) {
@@ -1408,9 +1417,16 @@ function initContactForm() {
           submitBtn.disabled = false;
           submitBtn.innerHTML = originalText;
           lucide.createIcons();
-          showToast("Pesan Anda telah berhasil kami terima.");
-        }, 2000);
-      }, 1500);
+          
+          // REAL REDIRECTION: Formulate text message and redirect to admin WhatsApp
+          const waMessage = `Halo admin BumiTani, saya ingin mengirimkan pesan/pertanyaan:\n\nNama: ${name}\nEmail: ${email}\nPesan: ${message}`;
+          const encodedText = encodeURIComponent(waMessage);
+          const waUrl = `https://wa.me/62${ADMIN_WHATSAPP.substring(1)}?text=${encodedText}`;
+          window.open(waUrl, "_blank");
+
+          showToast("Pesan Anda telah dialihkan ke WhatsApp.");
+        }, 1000);
+      }, 1200);
     });
   }
 }

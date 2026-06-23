@@ -80,7 +80,7 @@
       <div class="flex items-center justify-between h-20">
         <!-- Logo and Brand -->
         <a href="#" data-tab="home" class="flex items-center gap-3 group">
-          <div class="w-10 h-10 rounded-lg bg-forest-900 flex items-center justify-center text-broken-100 font-display font-bold shadow-sm transition-transform duration-300 group-hover:scale-105">
+          <div class="w-10 h-10 rounded-lg bg-forest-900 flex items-center justify-center text-white font-display font-bold shadow-sm transition-transform duration-300 group-hover:scale-105">
             BT
           </div>
           <span class="font-display font-extrabold text-xl tracking-tight text-forest-900 transition-colors duration-300 group-hover:text-forest-700">
@@ -102,7 +102,7 @@
           <!-- Shopping Cart Button (Desktop) -->
           <button id="cart-open-btn" class="relative p-2.5 rounded-full hover:bg-stone-200/50 text-stone-700 transition duration-200 focus:outline-none">
             <i data-lucide="shopping-bag" class="w-5.5 h-5.5 stroke-[1.8]"></i>
-            <span class="cart-counter absolute -top-1.5 -right-1.5 bg-forest-900 text-broken-100 text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center hidden border-2 border-broken-100">
+            <span class="cart-counter absolute -top-1.5 -right-1.5 bg-forest-900 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center hidden border-2 border-broken-100">
               0
             </span>
           </button>
@@ -154,7 +154,7 @@
     
     <div class="p-6 border-t border-stone-100 bg-stone-50 flex flex-col gap-4">
       <!-- Mobile Cart Quick Trigger -->
-      <button id="cart-open-btn-mobile" class="w-full bg-forest-900 hover:bg-forest-800 text-broken-100 py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition duration-200 shadow-sm">
+      <button id="cart-open-btn-mobile" class="w-full bg-forest-900 hover:bg-forest-800 text-white py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition duration-200 shadow-sm">
         <i data-lucide="shopping-bag" class="w-4 h-4"></i>
         Keranjang Belanja (<span class="cart-counter">0</span>)
       </button>
@@ -189,7 +189,7 @@
           <span id="cart-total-price" class="font-display font-extrabold text-stone-900 text-lg">Rp 0</span>
         </div>
         <p class="text-[11px] text-stone-400 mb-4 leading-normal">Pemesanan diproses langsung melalui WhatsApp. Tekan tombol di bawah untuk melanjutkan ke pengisian data alamat kirim.</p>
-        <button id="cart-checkout-btn" class="w-full bg-forest-900 hover:bg-forest-800 disabled:bg-stone-200 disabled:text-stone-400 disabled:cursor-not-allowed text-broken-100 py-3.5 rounded-lg font-semibold flex items-center justify-center gap-2.5 transition duration-200 shadow-md">
+        <button id="cart-checkout-btn" class="w-full bg-forest-900 hover:bg-forest-800 disabled:bg-stone-200 disabled:text-stone-400 disabled:cursor-not-allowed text-white py-3.5 rounded-lg font-semibold flex items-center justify-center gap-2.5 transition duration-200 shadow-md">
           <i data-lucide="shopping-cart" class="w-4 h-4"></i>
           Lanjut ke Checkout
         </button>
@@ -226,7 +226,8 @@
               </p>
               
               <div class="flex flex-col sm:flex-row gap-4 mt-8 w-full sm:w-auto">
-                <a href="#products" data-tab="products" class="btn-primary bg-forest-900 hover:bg-forest-800 text-broken-100 text-center font-semibold px-8 py-4 rounded-lg text-sm shadow-sm transition">
+                <!-- FIXED Hero button: text-white guarantees visibility in all CDN compile states -->
+                <a href="#products" data-tab="products" class="btn-primary bg-forest-900 hover:bg-forest-800 text-white text-center font-semibold px-8 py-4 rounded-lg text-sm shadow-sm transition">
                   Jelajahi Katalog Produk
                 </a>
                 <a href="#profile" data-tab="profile" class="bg-white hover:bg-stone-50 text-stone-700 text-center font-semibold px-8 py-4 rounded-lg text-sm border border-stone-200 transition">
@@ -364,14 +365,16 @@
         </div>
       </div>
 
-      <!-- Profile Banner Image (Header-Profil.jpg) -->
-      <div class="w-full h-96 lg:h-[480px] bg-stone-100 overflow-hidden relative">
-        <img src="assets/Header-Profil.jpg" alt="BumiTani Corporate Banner" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-stone-900/10"></div>
+      <!-- FIXED: Profile Banner Image positioned inside container elegantly to avoid "pasted" look -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 -mb-10 relative z-10">
+        <div class="relative rounded-2xl overflow-hidden shadow-xl border border-stone-200/60 aspect-[21/9] w-full bg-stone-100">
+          <img src="assets/Header-Profil.jpg" alt="BumiTani Corporate Banner" class="w-full h-full object-cover transition-transform duration-700 hover:scale-102">
+          <div class="absolute inset-0 bg-gradient-to-t from-forest-900/20 to-transparent"></div>
+        </div>
       </div>
 
       <!-- Profile Detailed Content (from profile.txt) -->
-      <div class="py-20 bg-broken-100">
+      <div class="pt-24 pb-20 bg-broken-100 border-t border-stone-200/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
             
@@ -454,7 +457,7 @@
               Filter Kategori
             </h3>
             <div class="flex flex-wrap lg:flex-col gap-2">
-              <button data-filter="all" class="bg-forest-900 text-broken-100 text-xs font-semibold px-4 py-2.5 rounded-lg border border-forest-900 text-left transition w-full sm:w-auto lg:w-full">
+              <button data-filter="all" class="bg-forest-900 text-white text-xs font-semibold px-4 py-2.5 rounded-lg border border-forest-900 text-left transition w-full sm:w-auto lg:w-full">
                 Semua Produk
               </button>
               <button data-filter="bibit" class="bg-white text-stone-750 hover:border-stone-400 text-xs font-semibold px-4 py-2.5 rounded-lg border border-stone-200 text-left transition w-full sm:w-auto lg:w-full">
@@ -637,7 +640,7 @@
                 <textarea id="contact-message" rows="5" placeholder="Tuliskan kendala, pesanan kuantitas besar, atau keluhan Anda di sini secara detail..." class="w-full bg-broken-100 text-sm px-4 py-3 rounded-lg border border-stone-200 focus:outline-none focus:ring-1 focus:ring-forest-900 focus:border-forest-900 transition resize-none"></textarea>
               </div>
 
-              <button type="submit" class="bg-forest-900 hover:bg-forest-800 text-broken-100 text-sm font-semibold py-3.5 rounded-lg transition duration-200 shadow-sm flex items-center justify-center gap-2">
+              <button type="submit" class="bg-forest-900 hover:bg-forest-800 text-white text-sm font-semibold py-3.5 rounded-lg transition duration-200 shadow-sm flex items-center justify-center gap-2">
                 <i data-lucide="send" class="w-4 h-4"></i>
                 Kirim Pesanan / Pertanyaan Anda
               </button>
@@ -756,7 +759,7 @@
             <span class="text-stone-400 text-xs font-bold uppercase">Harga</span>
             <span id="modal-product-price" class="font-display font-extrabold text-stone-900 text-xl"></span>
           </div>
-          <button id="modal-buy-btn" class="w-full bg-forest-900 hover:bg-forest-800 text-broken-100 text-sm font-semibold py-3.5 rounded-lg flex items-center justify-center gap-2 transition duration-300 shadow-md">
+          <button id="modal-buy-btn" class="w-full bg-forest-900 hover:bg-forest-800 text-white text-sm font-semibold py-3.5 rounded-lg flex items-center justify-center gap-2 transition duration-300 shadow-md">
             <i data-lucide="shopping-cart" class="w-4 h-4"></i>
             Tambah ke Keranjang
           </button>
@@ -823,7 +826,7 @@
         <button id="checkout-cancel-btn" class="w-full sm:w-1/3 bg-white hover:bg-stone-50 text-stone-700 text-xs font-semibold py-3.5 rounded-lg border border-stone-200 transition">
           Batal
         </button>
-        <button id="checkout-submit-btn" class="w-full sm:w-2/3 bg-forest-900 hover:bg-forest-800 text-broken-100 text-xs font-semibold py-3.5 rounded-lg flex items-center justify-center gap-2.5 transition duration-300 shadow-md">
+        <button id="checkout-submit-btn" class="w-full sm:w-2/3 bg-forest-900 hover:bg-forest-800 text-white text-xs font-semibold py-3.5 rounded-lg flex items-center justify-center gap-2.5 transition duration-300 shadow-md">
           <i data-lucide="send" class="w-4 h-4"></i>
           Kirim ke WhatsApp
         </button>
