@@ -1,5 +1,5 @@
 /* =============================================
-   TaniSmart - Modern Agricultural E-Commerce
+   BumiTani - Modern Agricultural E-Commerce
    Main JavaScript
    =============================================
    ⚙️ CONFIG: Ubah nomor WhatsApp admin di sini
@@ -1002,8 +1002,38 @@ function filterProducts() {
 }
 
 /* =============================================
-   QUICK VIEW
+   PRODUCT DETAIL (FULL VIEW)
+   Tampilan lengkap produk dengan gambar besar + produk serupa
    ============================================= */
+
+const BADGE_COLORS = {
+  bibit:     '#059669',
+  nutrisi:   '#2563eb',
+  pakan:     '#d97706',
+  peralatan: '#475569',
+  pestisida: '#db2777',
+  pupuk:     '#7c3aed',
+};
+
+function formatProductDesc(desc) {
+  // Split teks deskripsi menjadi bullet-points yang rapi
+  // Pisah berdasarkan titik diikuti spasi + huruf kapital
+  const parts = desc.split(/(?<=\.)\s+(?=[A-Z])/g);
+
+  if (parts.length >= 3) {
+    const items = parts.filter(s => s.trim().length > 0).map(s => s.trim().replace(/\.+$/, ''));
+    return `<ul class="space-y-2.5 mt-1">${
+      items.map(item => `
+        <li class="flex items-start gap-2.5">
+          <span class="mt-1.5 w-2 h-2 rounded-full bg-primary-500 flex-shrink-0"></span>
+          <span class="text-dark-500 text-sm leading-relaxed">${item}.</span>
+        </li>`).join('')
+    }</ul>`;
+  }
+
+  // Teks pendek → paragraph biasa
+  return `<p class="text-dark-500 text-sm leading-relaxed">${desc}</p>`;
+}
 
 function openQuickView(productId) {
   const product = PRODUCT_DATA.find(p => p.id === productId);
@@ -1013,52 +1043,90 @@ function openQuickView(productId) {
   qvQty = 1;
 
   const catLabel = CATEGORY_LABELS[product.category] || product.category;
-  const badgeColors = {
-    bibit: 'bg-emerald-500',
-    nutrisi: 'bg-blue-500',
-    pakan: 'bg-amber-500',
-    peralatan: 'bg-slate-500',
-    pestisida: 'bg-pink-500',
-    pupuk: 'bg-violet-500',
-  };
 
-  document.getElementById('qv-img').src = product.img;
-  document.getElementById('qv-img').alt = product.name;
-  document.getElementById('qv-title').textContent = product.name + ' – ' + product.weight;
-  document.getElementById('qv-desc').textContent = product.desc;
-  document.getElementById('qv-badge').textContent = catLabel;
-  document.getElementById('qv-badge').className = 'px-3 py-1 rounded-full text-xs font-bold text-white ' + (badgeColors[product.category] || 'bg-primary-500');
-  document.getElementById('qv-qty').textContent = '1';
+  // Set gambar besar
+  const pdImg = document.getElementById('pd-img');
+  pdImg.src = product.img;
+  pdImg.alt = product.name;
 
-  document.getElementById('quickview-overlay').classList.remove('hidden');
+  // Set badge kategori
+  const badge = document.getElementById('pd-badge');
+  badge.textContent = catLabel;
+  badge.style.background = BADGE_COLORS[product.category] || '#22c55e';
+
+  // Set nama & berat
+  document.getElementById('pd-name').textContent = product.name;
+  document.getElementById('pd-weight').textContent = product.weight;
+
+  // Set deskripsi lengkap terformat
+  document.getElementById('pd-desc').innerHTML = formatProductDesc(product.desc);
+
+  // Reset qty
+  document.getElementById('pd-qty').textContent = '1';
+
+  // Set link WA langsung untuk produk ini
+  const waText = `Halo BumiTani! 👋\n\nSaya tertarik dengan produk:\n*${product.name}* (${product.weight})\n\nMohon informasi ketersediaan dan harganya. Terima kasih! 🌿`;
+  const waBtn = document.getElementById('pd-wa-btn');
+  if (waBtn) waBtn.href = `https://wa.me/${ADMIN_WHATSAPP}?text=${encodeURIComponent(waText)}`;
+
+  // Render produk serupa (kategori sama, kecuali produk ini)
+  const related = PRODUCT_DATA.filter(p => p.category === product.category && p.id !== product.id);
+  const relContainer = document.getElementById('pd-related');
+  relContainer.innerHTML = related.map(r => `
+    <div onclick="openQuickView('${r.id}')" class="cursor-pointer group bg-white rounded-2xl overflow-hidden border border-dark-100 hover:border-primary-300 hover:shadow-lg transition-all duration-250">
+      <div class="aspect-square overflow-hidden bg-dark-50">
+        <img
+          src="${r.img}"
+          alt="${r.name}"
+          loading="lazy"
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-400"
+          onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22><rect fill=%22%23f1f5f9%22 width=%22200%22 height=%22200%22/><text x=%22100%22 y=%22110%22 font-size=%2236%22 text-anchor=%22middle%22 fill=%22%2394a3b8%22>🌿</text></svg>'"
+        />
+      </div>
+      <div class="p-2.5">
+        <p class="text-xs font-bold text-dark-800 leading-tight" style="display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">${r.name}</p>
+        <p class="text-xs text-primary-600 font-semibold mt-0.5">${r.weight}</p>
+      </div>
+    </div>
+  `).join('');
+
+  // Tampilkan overlay
+  document.getElementById('product-detail-overlay').classList.remove('hidden');
   document.body.style.overflow = 'hidden';
 }
 
-function closeQuickView(e) {
-  if (e && e.target !== document.getElementById('quickview-overlay')) {
-    // Clicked inside modal – do nothing unless explicit close
-    return;
+function handlePdOverlayClick(e) {
+  if (e.target === document.getElementById('product-detail-overlay')) {
+    closeProductDetail();
   }
-  document.getElementById('quickview-overlay').classList.add('hidden');
+}
+
+function closeProductDetail() {
+  document.getElementById('product-detail-overlay').classList.add('hidden');
   document.body.style.overflow = '';
   currentQvProduct = null;
 }
 
+// Alias agar tombol ESC dan overlay click tetap berfungsi
+function closeQuickView() { closeProductDetail(); }
+
 function changeQvQty(delta) {
   qvQty = Math.max(1, qvQty + delta);
-  document.getElementById('qv-qty').textContent = qvQty;
+  document.getElementById('pd-qty').textContent = qvQty;
 }
 
-function addQvToCart() {
+function addPdToCart() {
   if (!currentQvProduct) return;
   for (let i = 0; i < qvQty; i++) {
     addToCart(currentQvProduct.id, false);
   }
-  document.getElementById('quickview-overlay').classList.add('hidden');
-  document.body.style.overflow = '';
+  closeProductDetail();
   showToast(`${currentQvProduct.name} (${qvQty}×) ditambahkan!`);
   updateCartUI();
 }
+
+// Alias lama agar kompatibel jika masih terpanggil
+function addQvToCart() { addPdToCart(); }
 
 /* =============================================
    CART SYSTEM
@@ -1212,7 +1280,7 @@ function submitCheckout(e) {
   let orderLines = cart.map(item => `• *${item.name}* (${item.weight})\n  Qty: ${item.qty}×`).join('\n\n');
   const totalItems = cart.reduce((s, i) => s + i.qty, 0);
 
-  let message = `Halo admin TaniSmart, saya ingin memesan:\n\n`;
+  let message = `Halo admin BumiTani, saya ingin memesan:\n\n`;
   message += orderLines;
   message += `\n\n━━━━━━━━━━━━━━━\n`;
   message += `Total: *${totalItems} item*\n\n`;
@@ -1244,7 +1312,7 @@ function submitContactForm(e) {
   const subject = document.getElementById('contact-subject').value.trim();
   const message = document.getElementById('contact-message').value.trim();
 
-  let waMessage = `Halo TaniSmart! 👋\n\n`;
+  let waMessage = `Halo BumiTani! 👋\n\n`;
   waMessage += `Nama: *${name}*\n`;
   waMessage += `No. HP: ${phone}\n`;
   waMessage += `Subjek: *${subject}*\n\n`;
@@ -1339,7 +1407,7 @@ function showToast(message) {
 
 document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape') {
-    document.getElementById('quickview-overlay').classList.add('hidden');
+    closeProductDetail();
     document.getElementById('checkout-overlay').classList.add('hidden');
     const sidebar = document.getElementById('cart-sidebar');
     if (!sidebar.classList.contains('translate-x-full')) {

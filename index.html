@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TaniSmart – Distributor Obat & Alat Pertanian Online Terpercaya</title>
-  <meta name="description" content="TaniSmart adalah toko pertanian online terpercaya yang menyediakan bibit, nutrisi, pakan ternak, pestisida, pupuk, dan peralatan pertanian berkualitas dengan harga terjangkau." />
-  <meta name="keywords" content="toko pertanian online, jual pupuk, bibit tanaman, pestisida, nutrisi tanaman, pakan ternak, peralatan pertanian, TaniSmart" />
-  <meta name="author" content="TaniSmart" />
+  <title>BumiTani – Distributor Obat & Alat Pertanian Online Terpercaya</title>
+  <meta name="description" content="BumiTani adalah toko pertanian online terpercaya yang menyediakan bibit, nutrisi, pakan ternak, pestisida, pupuk, dan peralatan pertanian berkualitas dengan harga terjangkau." />
+  <meta name="keywords" content="toko pertanian online, jual pupuk, bibit tanaman, pestisida, nutrisi tanaman, pakan ternak, peralatan pertanian, BumiTani" />
+  <meta name="author" content="BumiTani" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="TaniSmart – Distributor Obat & Alat Pertanian Online" />
+  <meta property="og:title" content="BumiTani – Distributor Obat & Alat Pertanian Online" />
   <meta property="og:description" content="Distributor terpercaya bibit, nutrisi, pakan, pestisida, pupuk, dan peralatan pertanian berkualitas." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://tanismart.com" />
+  <meta property="og:url" content="https://bumitani.com" />
   <meta property="og:image" content="gambar-untuk-web-pertanian/pupuk/1.jpg" />
 
   <!-- Fonts -->
@@ -105,7 +105,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 3C7 3 3 7 3 12s4 9 9 9 9-4 9-9-4-9-9-9z M12 3c0 0-3 5-3 9s3 9 3 9 3-5 3-9-3-9-3-9z M3 12h18" />
             </svg>
           </div>
-          <span class="font-black text-xl tracking-tight text-white">Tani<span class="text-primary-400">Smart</span></span>
+          <span class="font-black text-xl tracking-tight text-white">Bumi<span class="text-primary-400">Tani</span></span>
         </a>
 
         <!-- Desktop Nav -->
@@ -202,7 +202,7 @@
     <div id="cart-footer" class="hidden p-6 border-t border-dark-100 bg-dark-50">
       <div class="flex items-center justify-between mb-4">
         <span class="text-dark-600 font-medium">Total</span>
-        <span id="cart-total" class="font-black text-2xl text-dark-900">Rp 0</span>
+        <span id="cart-total" class="font-black text-2xl text-dark-900">0 item</span>
       </div>
       <button onclick="openCheckoutForm()" class="w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white py-4 rounded-2xl font-bold text-base transition-all duration-300 hover:scale-[1.02] shadow-lg shadow-primary-500/30 flex items-center justify-center gap-2">
         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -220,7 +220,7 @@
        CHECKOUT FORM MODAL
   ============================== -->
   <div id="checkout-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md p-8 transform scale-95 transition-all duration-300" id="checkout-modal">
+    <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md p-8" id="checkout-modal">
       <div class="text-center mb-6">
         <div class="w-14 h-14 bg-primary-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
           <svg class="w-7 h-7 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -263,36 +263,94 @@
   </div>
 
   <!-- ==============================
-       PRODUCT QUICK VIEW MODAL
+       PRODUCT DETAIL MODAL (BARU)
+       Tampilan seperti halaman produk lengkap
   ============================== -->
-  <div id="quickview-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4" onclick="closeQuickView(event)">
-    <div id="quickview-modal" class="bg-white rounded-3xl shadow-2xl w-full max-w-2xl overflow-hidden max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
-      <div class="relative">
-        <img id="qv-img" src="" alt="" class="w-full h-64 sm:h-80 object-cover" />
-        <button onclick="closeQuickView()" class="absolute top-4 right-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg hover:bg-white transition-all duration-200">
+  <div id="product-detail-overlay" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden overflow-y-auto" onclick="handlePdOverlayClick(event)">
+    <div class="min-h-screen flex items-start justify-center p-3 sm:p-6 py-8 sm:py-12">
+      <div id="product-detail-modal" class="bg-white rounded-3xl shadow-2xl w-full max-w-5xl relative overflow-hidden" onclick="event.stopPropagation()">
+
+        <!-- Close Button -->
+        <button onclick="closeProductDetail()" class="absolute top-4 right-4 z-20 w-10 h-10 bg-white/95 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg hover:bg-dark-50 transition-all duration-200 border border-dark-100">
           <svg class="w-5 h-5 text-dark-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
-        <div class="absolute top-4 left-4">
-          <span id="qv-badge" class="px-3 py-1 rounded-full text-xs font-bold text-white"></span>
-        </div>
-      </div>
-      <div class="p-6 sm:p-8">
-        <h3 id="qv-title" class="font-black text-2xl text-dark-900 mb-3"></h3>
-        <p id="qv-desc" class="text-dark-500 leading-relaxed text-sm mb-6"></p>
-        <div class="flex items-center gap-3">
-          <div class="flex items-center gap-2 flex-1">
-            <button id="qv-qty-minus" onclick="changeQvQty(-1)" class="w-10 h-10 rounded-xl border border-dark-200 flex items-center justify-center hover:bg-dark-50 font-bold text-dark-700 transition-all duration-200">−</button>
-            <span id="qv-qty" class="w-10 text-center font-bold text-dark-900 text-lg">1</span>
-            <button id="qv-qty-plus" onclick="changeQvQty(1)" class="w-10 h-10 rounded-xl border border-dark-200 flex items-center justify-center hover:bg-dark-50 font-bold text-dark-700 transition-all duration-200">+</button>
+
+        <!-- Modal Body: 2 kolom -->
+        <div class="flex flex-col lg:flex-row">
+
+          <!-- ===== KIRI: Gambar + Info Produk ===== -->
+          <div class="flex flex-col lg:w-[62%]">
+
+            <!-- Gambar Besar -->
+            <div class="relative overflow-hidden bg-dark-50" style="min-height:300px">
+              <img id="pd-img" src="" alt=""
+                class="w-full object-cover"
+                style="max-height:420px;min-height:300px;width:100%"
+                onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22400%22><rect fill=%22%23f1f5f9%22 width=%22600%22 height=%22400%22/><text x=%22300%22 y=%22210%22 font-size=%2280%22 text-anchor=%22middle%22 fill=%22%2394a3b8%22>🌿</text></svg>'" />
+            </div>
+
+            <!-- Info Produk -->
+            <div class="p-6 sm:p-8 flex flex-col flex-1">
+              <!-- Badge Kategori -->
+              <div class="flex items-center gap-2 mb-4 flex-wrap">
+                <span id="pd-badge" class="px-3 py-1 rounded-full text-xs font-bold text-white"></span>
+                <span class="text-dark-400 text-xs font-medium">· BumiTani Store</span>
+              </div>
+
+              <!-- Nama & Berat -->
+              <h2 id="pd-name" class="font-black text-2xl sm:text-3xl text-dark-900 mb-1 leading-tight"></h2>
+              <p id="pd-weight" class="text-primary-600 font-bold text-sm mb-6 uppercase tracking-wide"></p>
+
+              <!-- Deskripsi Lengkap -->
+              <div id="pd-desc" class="text-dark-500 text-sm leading-relaxed flex-1"></div>
+
+              <!-- Action: Qty + Tambah Keranjang + WA -->
+              <div class="mt-8 pt-6 border-t border-dark-100">
+                <div class="flex items-center gap-3 flex-wrap sm:flex-nowrap">
+                  <!-- Qty Control -->
+                  <div class="flex items-center gap-2 bg-dark-50 rounded-xl p-1 border border-dark-200 flex-shrink-0">
+                    <button onclick="changeQvQty(-1)" class="w-9 h-9 rounded-lg flex items-center justify-center font-bold text-dark-700 hover:bg-white hover:shadow transition-all duration-150 text-lg">−</button>
+                    <span id="pd-qty" class="w-8 text-center font-black text-dark-900 text-lg select-none">1</span>
+                    <button onclick="changeQvQty(1)" class="w-9 h-9 rounded-lg flex items-center justify-center font-bold text-dark-700 hover:bg-white hover:shadow transition-all duration-150 text-lg">+</button>
+                  </div>
+                  <!-- Tambah Keranjang -->
+                  <button onclick="addPdToCart()" class="flex-1 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white py-3 rounded-xl font-bold transition-all duration-200 hover:scale-[1.02] flex items-center justify-center gap-2 shadow-lg shadow-primary-500/25 text-sm">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    Tambah ke Keranjang
+                  </button>
+                  <!-- WA Direct -->
+                  <a id="pd-wa-btn" href="#" target="_blank"
+                    class="w-12 h-12 bg-[#25D366] hover:bg-[#1ebe57] rounded-xl flex items-center justify-center transition-all duration-200 hover:scale-105 shadow-lg shadow-green-500/30 flex-shrink-0"
+                    title="Tanya via WhatsApp">
+                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
-          <button id="qv-add-btn" onclick="addQvToCart()" class="flex-1 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white py-3 rounded-xl font-bold transition-all duration-200 hover:scale-[1.02] flex items-center justify-center gap-2">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-            </svg>
-            Tambah ke Keranjang
-          </button>
+
+          <!-- ===== KANAN: Produk Serupa (2/5) ===== -->
+          <div class="lg:w-[38%] border-t lg:border-t-0 lg:border-l border-dark-100 bg-dark-50/60 flex flex-col">
+            <div class="p-5 border-b border-dark-100">
+              <h3 class="font-bold text-dark-800 text-sm uppercase tracking-wider flex items-center gap-2">
+                <svg class="w-4 h-4 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                </svg>
+                Produk Serupa
+              </h3>
+            </div>
+            <!-- Grid Produk Serupa — Scrollable -->
+            <div class="overflow-y-auto flex-1 p-4 lg:p-5" style="max-height:600px">
+              <div id="pd-related" class="grid grid-cols-2 gap-3"></div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -308,12 +366,10 @@
 
       <!-- Hero Section -->
       <section id="home" class="relative min-h-screen bg-hero-gradient overflow-hidden flex items-center">
-        <!-- Animated background elements -->
         <div class="absolute inset-0 overflow-hidden">
           <div class="absolute -top-40 -right-40 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl animate-pulse-slow"></div>
           <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-primary-600/10 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 2s"></div>
           <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary-500/5 rounded-full blur-3xl"></div>
-          <!-- Grid pattern -->
           <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px); background-size: 60px 60px;"></div>
         </div>
 
@@ -322,7 +378,6 @@
 
             <!-- Hero Text -->
             <div class="text-center lg:text-left">
-              <!-- Badge -->
               <div id="hero-badge" class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 px-4 py-2 rounded-full text-xs font-semibold mb-8">
                 <span class="w-2 h-2 bg-primary-400 rounded-full animate-pulse"></span>
                 Distributor Resmi Pertanian Terpercaya
@@ -368,44 +423,41 @@
 
             <!-- Hero Visual -->
             <div class="hidden lg:block relative">
-              <div class="relative z-10">
-                <!-- Floating Cards -->
-                <div class="grid grid-cols-2 gap-4">
-                  <div class="glass-card p-5 rounded-2xl col-span-2" data-aos="fade-up" data-aos-delay="100">
-                    <div class="flex items-center gap-4">
-                      <div class="w-12 h-12 bg-primary-500/20 rounded-xl flex items-center justify-center">
-                        <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <div class="text-white font-bold text-sm">Kualitas Terjamin</div>
-                        <div class="text-white/50 text-xs mt-0.5">Produk resmi dari produsen terpercaya</div>
-                      </div>
+              <div class="grid grid-cols-2 gap-4">
+                <div class="glass-card p-5 rounded-2xl col-span-2" data-aos="fade-up" data-aos-delay="100">
+                  <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-primary-500/20 rounded-xl flex items-center justify-center">
+                      <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <div class="text-white font-bold text-sm">Kualitas Terjamin</div>
+                      <div class="text-white/50 text-xs mt-0.5">Produk resmi dari produsen terpercaya</div>
                     </div>
                   </div>
-                  <div class="glass-card p-5 rounded-2xl" data-aos="fade-up" data-aos-delay="200">
-                    <div class="text-white/50 text-xs mb-1">Mitra Resmi</div>
-                    <div class="text-white font-bold text-sm">PT. Yara Indonesia</div>
-                    <div class="text-primary-400 text-xs mt-1">Produsen Pupuk #1</div>
+                </div>
+                <div class="glass-card p-5 rounded-2xl" data-aos="fade-up" data-aos-delay="200">
+                  <div class="text-white/50 text-xs mb-1">Mitra Resmi</div>
+                  <div class="text-white font-bold text-sm">PT. Yara Indonesia</div>
+                  <div class="text-primary-400 text-xs mt-1">Produsen Pupuk #1</div>
+                </div>
+                <div class="glass-card p-5 rounded-2xl" data-aos="fade-up" data-aos-delay="300">
+                  <div class="text-white/50 text-xs mb-1">Layanan</div>
+                  <div class="text-white font-bold text-sm">Konsultasi Gratis</div>
+                  <div class="text-primary-400 text-xs mt-1">Pertanian & Peternakan</div>
+                </div>
+                <div class="glass-card p-5 rounded-2xl" data-aos="fade-up" data-aos-delay="400">
+                  <div class="text-white/50 text-xs mb-2">Kepuasan Pelanggan</div>
+                  <div class="flex items-center gap-1">
+                    <div class="text-yellow-400 text-lg">★★★★★</div>
                   </div>
-                  <div class="glass-card p-5 rounded-2xl" data-aos="fade-up" data-aos-delay="300">
-                    <div class="text-white/50 text-xs mb-1">Layanan</div>
-                    <div class="text-white font-bold text-sm">Konsultasi Gratis</div>
-                    <div class="text-primary-400 text-xs mt-1">Pertanian & Peternakan</div>
-                  </div>
-                  <div class="glass-card p-5 rounded-2xl" data-aos="fade-up" data-aos-delay="400">
-                    <div class="text-white/50 text-xs mb-2">Kepuasan Pelanggan</div>
-                    <div class="flex items-center gap-1">
-                      <div class="text-yellow-400 text-lg">★★★★★</div>
-                    </div>
-                    <div class="text-white font-bold text-sm mt-1">4.9 / 5.0</div>
-                  </div>
-                  <div class="glass-card p-5 rounded-2xl" data-aos="fade-up" data-aos-delay="500">
-                    <div class="text-white/50 text-xs mb-1">Pengiriman</div>
-                    <div class="text-white font-bold text-sm">Seluruh Indonesia</div>
-                    <div class="text-primary-400 text-xs mt-1">Via ekspedisi terpercaya</div>
-                  </div>
+                  <div class="text-white font-bold text-sm mt-1">4.9 / 5.0</div>
+                </div>
+                <div class="glass-card p-5 rounded-2xl" data-aos="fade-up" data-aos-delay="500">
+                  <div class="text-white/50 text-xs mb-1">Pengiriman</div>
+                  <div class="text-white font-bold text-sm">Seluruh Indonesia</div>
+                  <div class="text-primary-400 text-xs mt-1">Via ekspedisi terpercaya</div>
                 </div>
               </div>
             </div>
@@ -447,7 +499,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center mb-16" data-aos="fade-up">
             <span class="text-primary-600 text-sm font-bold uppercase tracking-widest">Keunggulan Kami</span>
-            <h2 class="font-black text-4xl sm:text-5xl text-dark-900 mt-3 mb-4">Kenapa Memilih TaniSmart?</h2>
+            <h2 class="font-black text-4xl sm:text-5xl text-dark-900 mt-3 mb-4">Kenapa Memilih BumiTani?</h2>
             <p class="text-dark-500 max-w-2xl mx-auto text-lg">Kami menghadirkan produk pertanian berkualitas tinggi dengan layanan terbaik untuk mendukung keberhasilan usaha tani Anda.</p>
           </div>
 
@@ -461,7 +513,6 @@
               <h3 class="font-bold text-xl text-dark-900 mb-3">Produk Terpercaya</h3>
               <p class="text-dark-500 leading-relaxed">Semua produk bersumber langsung dari produsen resmi dan terpercaya seperti Yara, Syngenta, Bayer, dan lainnya.</p>
             </div>
-
             <div class="group p-8 rounded-3xl border border-dark-100 hover:border-primary-200 hover:bg-primary-50/30 transition-all duration-300 hover:-translate-y-1" data-aos="fade-up" data-aos-delay="100">
               <div class="w-14 h-14 bg-primary-100 group-hover:bg-primary-200 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-110">
                 <svg class="w-7 h-7 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -471,7 +522,6 @@
               <h3 class="font-bold text-xl text-dark-900 mb-3">Harga Kompetitif</h3>
               <p class="text-dark-500 leading-relaxed">Kerjasama langsung dengan pabrik memungkinkan kami memberikan harga terbaik tanpa mengorbankan kualitas produk.</p>
             </div>
-
             <div class="group p-8 rounded-3xl border border-dark-100 hover:border-primary-200 hover:bg-primary-50/30 transition-all duration-300 hover:-translate-y-1" data-aos="fade-up" data-aos-delay="200">
               <div class="w-14 h-14 bg-primary-100 group-hover:bg-primary-200 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-110">
                 <svg class="w-7 h-7 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -481,7 +531,6 @@
               <h3 class="font-bold text-xl text-dark-900 mb-3">Konsultasi Gratis</h3>
               <p class="text-dark-500 leading-relaxed">Tim ahli kami siap membantu menyelesaikan permasalahan pertanian, peternakan, dan perikanan Anda secara gratis.</p>
             </div>
-
             <div class="group p-8 rounded-3xl border border-dark-100 hover:border-primary-200 hover:bg-primary-50/30 transition-all duration-300 hover:-translate-y-1" data-aos="fade-up" data-aos-delay="300">
               <div class="w-14 h-14 bg-primary-100 group-hover:bg-primary-200 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-110">
                 <svg class="w-7 h-7 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -491,7 +540,6 @@
               <h3 class="font-bold text-xl text-dark-900 mb-3">Produk Terlengkap</h3>
               <p class="text-dark-500 leading-relaxed">Dari bibit hingga peralatan, semua kebutuhan pertanian tersedia dalam satu toko online yang lengkap dan mudah diakses.</p>
             </div>
-
             <div class="group p-8 rounded-3xl border border-dark-100 hover:border-primary-200 hover:bg-primary-50/30 transition-all duration-300 hover:-translate-y-1" data-aos="fade-up" data-aos-delay="400">
               <div class="w-14 h-14 bg-primary-100 group-hover:bg-primary-200 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-110">
                 <svg class="w-7 h-7 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -501,7 +549,6 @@
               <h3 class="font-bold text-xl text-dark-900 mb-3">Checkout WhatsApp</h3>
               <p class="text-dark-500 leading-relaxed">Proses pemesanan mudah dan cepat langsung via WhatsApp. Tidak perlu akun, tidak perlu kartu kredit.</p>
             </div>
-
             <div class="group p-8 rounded-3xl border border-dark-100 hover:border-primary-200 hover:bg-primary-50/30 transition-all duration-300 hover:-translate-y-1" data-aos="fade-up" data-aos-delay="500">
               <div class="w-14 h-14 bg-primary-100 group-hover:bg-primary-200 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-110">
                 <svg class="w-7 h-7 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -544,14 +591,10 @@
           </div>
           <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div class="p-8 rounded-3xl border border-dark-100 hover:border-primary-200 hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="0">
-              <div class="flex items-center gap-1 mb-4">
-                <span class="text-yellow-400">★★★★★</span>
-              </div>
-              <p class="text-dark-600 leading-relaxed mb-6">"Pupuk NPK Mutiara dari TaniSmart sangat bagus. Tanaman cabai saya jadi lebih produktif dan buahnya besar-besar. Harganya pun terjangkau!"</p>
+              <div class="flex items-center gap-1 mb-4"><span class="text-yellow-400">★★★★★</span></div>
+              <p class="text-dark-600 leading-relaxed mb-6">"Pupuk NPK Mutiara dari BumiTani sangat bagus. Tanaman cabai saya jadi lebih produktif dan buahnya besar-besar. Harganya pun terjangkau!"</p>
               <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
-                  <span class="text-primary-700 font-bold text-sm">BW</span>
-                </div>
+                <div class="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center"><span class="text-primary-700 font-bold text-sm">BW</span></div>
                 <div>
                   <div class="font-semibold text-dark-900 text-sm">Budi Wijaya</div>
                   <div class="text-dark-400 text-xs">Petani Cabai, Jawa Tengah</div>
@@ -559,14 +602,10 @@
               </div>
             </div>
             <div class="p-8 rounded-3xl border border-dark-100 hover:border-primary-200 hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
-              <div class="flex items-center gap-1 mb-4">
-                <span class="text-yellow-400">★★★★★</span>
-              </div>
+              <div class="flex items-center gap-1 mb-4"><span class="text-yellow-400">★★★★★</span></div>
               <p class="text-dark-600 leading-relaxed mb-6">"Pelayanan cepat dan ramah. Konsultasi gratis sangat membantu saya sebagai peternak pemula. Pakan ternaknya berkualitas tinggi!"</p>
               <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
-                  <span class="text-primary-700 font-bold text-sm">SR</span>
-                </div>
+                <div class="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center"><span class="text-primary-700 font-bold text-sm">SR</span></div>
                 <div>
                   <div class="font-semibold text-dark-900 text-sm">Sari Rahayu</div>
                   <div class="text-dark-400 text-xs">Peternak Ayam, Jawa Timur</div>
@@ -574,14 +613,10 @@
               </div>
             </div>
             <div class="p-8 rounded-3xl border border-dark-100 hover:border-primary-200 hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
-              <div class="flex items-center gap-1 mb-4">
-                <span class="text-yellow-400">★★★★★</span>
-              </div>
+              <div class="flex items-center gap-1 mb-4"><span class="text-yellow-400">★★★★★</span></div>
               <p class="text-dark-600 leading-relaxed mb-6">"Bibit semangka dari sini kualitasnya luar biasa. Daya tumbuh tinggi dan hasil panennya memuaskan. Sangat direkomendasikan!"</p>
               <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
-                  <span class="text-primary-700 font-bold text-sm">AS</span>
-                </div>
+                <div class="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center"><span class="text-primary-700 font-bold text-sm">AS</span></div>
                 <div>
                   <div class="font-semibold text-dark-900 text-sm">Ahmad Santoso</div>
                   <div class="text-dark-400 text-xs">Petani Buah, Sumatera</div>
@@ -600,18 +635,14 @@
         </div>
         <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
           <h2 class="font-black text-4xl sm:text-5xl lg:text-6xl text-white mb-6">Siap Meningkatkan<br/><span class="text-primary-400">Hasil Panen Anda?</span></h2>
-          <p class="text-white/60 text-xl mb-10 max-w-2xl mx-auto">Bergabung dengan ribuan petani yang telah mempercayai TaniSmart sebagai mitra pertanian mereka.</p>
+          <p class="text-white/60 text-xl mb-10 max-w-2xl mx-auto">Bergabung dengan ribuan petani yang telah mempercayai BumiTani sebagai mitra pertanian mereka.</p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="#" onclick="showPage('products')" class="inline-flex items-center justify-center gap-2 bg-primary-500 hover:bg-primary-400 text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105 shadow-xl shadow-primary-500/30">
               Belanja Sekarang
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
             </a>
-            <a href="https://wa.me/6281234567890" target="_blank" class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105">
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-              </svg>
+            <a href="https://wa.me/6285795185561" target="_blank" class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
               WhatsApp Kami
             </a>
           </div>
@@ -621,10 +652,9 @@
 
     <!-- ========== PROFILE PAGE ========== -->
     <div id="page-profile" class="page-section hidden">
-      <!-- Profile Hero -->
       <section class="relative min-h-[60vh] overflow-hidden flex items-end">
         <div class="absolute inset-0">
-          <img src="Header-Profil.jpg" alt="TaniSmart Profile Header" class="w-full h-full object-cover" loading="lazy" />
+          <img src="Header-Profil.jpg" alt="BumiTani Profile Header" class="w-full h-full object-cover" loading="lazy" />
           <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/60 to-dark-950/20"></div>
         </div>
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-32">
@@ -633,40 +663,29 @@
               <span class="w-2 h-2 bg-primary-400 rounded-full"></span>
               Tentang Kami
             </span>
-            <h1 class="font-black text-5xl sm:text-6xl lg:text-7xl text-white mb-4">TaniSmart</h1>
-            <p class="text-white/60 text-xl max-w-2xl">Sekilas Tentang TaniSmart, Toko Pertanian Online</p>
+            <h1 class="font-black text-5xl sm:text-6xl lg:text-7xl text-white mb-4">BumiTani</h1>
+            <p class="text-white/60 text-xl max-w-2xl">Sekilas Tentang BumiTani, Toko Pertanian Online</p>
           </div>
         </div>
       </section>
 
-      <!-- Profile Content -->
       <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="grid lg:grid-cols-2 gap-16 items-start">
-
-            <!-- Left: About -->
             <div data-aos="fade-right">
               <span class="text-primary-600 text-sm font-bold uppercase tracking-widest">Profil Perusahaan</span>
               <h2 class="font-black text-4xl text-dark-900 mt-3 mb-6">Distributor Obat dan Alat Pertanian Online</h2>
               <div class="space-y-5 text-dark-500 leading-relaxed">
-                <p>TaniSmart.com merupakan toko online yang menyediakan produk-produk yang dibutuhkan untuk pertanian, perikanan, perkebunan, dan peternakan. Kami menjual berbagai macam obat-obatan dan alat pertanian, seperti Bibit / Benih, Nutrisi Tanaman, Pakan Ternak, Pestisida (Fungisida, Insektisida, Herbisida, Akarisida, dll), aneka pupuk (pupuk daun, pupuk akar, pupuk ZA, pupuk NPK Yaramila, NPK Mutiara, dll), dan juga alat-alat pertanian dengan kualitas terjamin dan harga terjangkau.</p>
+                <p>BumiTani merupakan toko online yang menyediakan produk-produk yang dibutuhkan untuk pertanian, perikanan, perkebunan, dan peternakan. Kami menjual berbagai macam obat-obatan dan alat pertanian, seperti Bibit / Benih, Nutrisi Tanaman, Pakan Ternak, Pestisida (Fungisida, Insektisida, Herbisida, Akarisida, dll), aneka pupuk (pupuk daun, pupuk akar, pupuk ZA, pupuk NPK Yaramila, NPK Mutiara, dll), dan juga alat-alat pertanian dengan kualitas terjamin dan harga terjangkau.</p>
                 <p>Bukan hanya menjual obat dan alat pertanian terlengkap, saat ini kami juga telah bekerjasama dengan pabrik dan produsen produk pertanian seperti PT. Yara Indonesia, PT. Meroke Tetap Jaya, PT Petrokimia Gresik, Syngenta, PT. Bisi International Tbk, PT Multi Sarana Indotani, Dupont, Bayer, Nufarm, PT BASF Indonesia, FMC, dll. Sehingga tidak hanya produk kami yang lengkap tapi kami bisa memberikan harga murah.</p>
                 <p>Dan yang pasti bila anda datang ke Toko offline kami, anda juga berhak mendapatkan konsultasi gratis mengenai permasalahan pertanian, peternakan dan perikanan.</p>
               </div>
-
               <div class="mt-8 flex flex-wrap gap-3">
-                <a href="#" onclick="showPage('products')" class="inline-flex items-center gap-2 bg-primary-500 hover:bg-primary-600 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-200 hover:scale-105">
-                  Lihat Produk
-                </a>
-                <a href="#" onclick="showPage('contact')" class="inline-flex items-center gap-2 border border-dark-200 hover:border-primary-500 text-dark-700 hover:text-primary-600 px-6 py-3 rounded-xl font-semibold transition-all duration-200">
-                  Hubungi Kami
-                </a>
+                <a href="#" onclick="showPage('products')" class="inline-flex items-center gap-2 bg-primary-500 hover:bg-primary-600 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-200 hover:scale-105">Lihat Produk</a>
+                <a href="#" onclick="showPage('contact')" class="inline-flex items-center gap-2 border border-dark-200 hover:border-primary-500 text-dark-700 hover:text-primary-600 px-6 py-3 rounded-xl font-semibold transition-all duration-200">Hubungi Kami</a>
               </div>
             </div>
-
-            <!-- Right: Stats & Partners -->
             <div data-aos="fade-left">
-              <!-- Stats Grid -->
               <div class="grid grid-cols-2 gap-4 mb-8">
                 <div class="p-6 rounded-2xl bg-primary-50 border border-primary-100">
                   <div class="font-black text-4xl text-primary-700 mb-1">72+</div>
@@ -685,43 +704,17 @@
                   <div class="text-primary-600 font-semibold text-sm">Rating Pelanggan</div>
                 </div>
               </div>
-
-              <!-- Partners -->
               <div class="p-6 rounded-2xl border border-dark-100">
                 <h3 class="font-bold text-dark-900 mb-4">Mitra Resmi Kami</h3>
                 <div class="grid grid-cols-2 gap-3">
-                  <div class="flex items-center gap-2 p-3 bg-dark-50 rounded-xl">
-                    <div class="w-2 h-2 bg-primary-500 rounded-full flex-shrink-0"></div>
-                    <span class="text-dark-600 text-xs font-medium">PT. Yara Indonesia</span>
-                  </div>
-                  <div class="flex items-center gap-2 p-3 bg-dark-50 rounded-xl">
-                    <div class="w-2 h-2 bg-primary-500 rounded-full flex-shrink-0"></div>
-                    <span class="text-dark-600 text-xs font-medium">PT. Meroke Tetap Jaya</span>
-                  </div>
-                  <div class="flex items-center gap-2 p-3 bg-dark-50 rounded-xl">
-                    <div class="w-2 h-2 bg-primary-500 rounded-full flex-shrink-0"></div>
-                    <span class="text-dark-600 text-xs font-medium">PT Petrokimia Gresik</span>
-                  </div>
-                  <div class="flex items-center gap-2 p-3 bg-dark-50 rounded-xl">
-                    <div class="w-2 h-2 bg-primary-500 rounded-full flex-shrink-0"></div>
-                    <span class="text-dark-600 text-xs font-medium">Syngenta</span>
-                  </div>
-                  <div class="flex items-center gap-2 p-3 bg-dark-50 rounded-xl">
-                    <div class="w-2 h-2 bg-primary-500 rounded-full flex-shrink-0"></div>
-                    <span class="text-dark-600 text-xs font-medium">Bayer</span>
-                  </div>
-                  <div class="flex items-center gap-2 p-3 bg-dark-50 rounded-xl">
-                    <div class="w-2 h-2 bg-primary-500 rounded-full flex-shrink-0"></div>
-                    <span class="text-dark-600 text-xs font-medium">PT BASF Indonesia</span>
-                  </div>
-                  <div class="flex items-center gap-2 p-3 bg-dark-50 rounded-xl">
-                    <div class="w-2 h-2 bg-primary-500 rounded-full flex-shrink-0"></div>
-                    <span class="text-dark-600 text-xs font-medium">Nufarm</span>
-                  </div>
-                  <div class="flex items-center gap-2 p-3 bg-dark-50 rounded-xl">
-                    <div class="w-2 h-2 bg-primary-500 rounded-full flex-shrink-0"></div>
-                    <span class="text-dark-600 text-xs font-medium">FMC</span>
-                  </div>
+                  <div class="flex items-center gap-2 p-3 bg-dark-50 rounded-xl"><div class="w-2 h-2 bg-primary-500 rounded-full flex-shrink-0"></div><span class="text-dark-600 text-xs font-medium">PT. Yara Indonesia</span></div>
+                  <div class="flex items-center gap-2 p-3 bg-dark-50 rounded-xl"><div class="w-2 h-2 bg-primary-500 rounded-full flex-shrink-0"></div><span class="text-dark-600 text-xs font-medium">PT. Meroke Tetap Jaya</span></div>
+                  <div class="flex items-center gap-2 p-3 bg-dark-50 rounded-xl"><div class="w-2 h-2 bg-primary-500 rounded-full flex-shrink-0"></div><span class="text-dark-600 text-xs font-medium">PT Petrokimia Gresik</span></div>
+                  <div class="flex items-center gap-2 p-3 bg-dark-50 rounded-xl"><div class="w-2 h-2 bg-primary-500 rounded-full flex-shrink-0"></div><span class="text-dark-600 text-xs font-medium">Syngenta</span></div>
+                  <div class="flex items-center gap-2 p-3 bg-dark-50 rounded-xl"><div class="w-2 h-2 bg-primary-500 rounded-full flex-shrink-0"></div><span class="text-dark-600 text-xs font-medium">Bayer</span></div>
+                  <div class="flex items-center gap-2 p-3 bg-dark-50 rounded-xl"><div class="w-2 h-2 bg-primary-500 rounded-full flex-shrink-0"></div><span class="text-dark-600 text-xs font-medium">PT BASF Indonesia</span></div>
+                  <div class="flex items-center gap-2 p-3 bg-dark-50 rounded-xl"><div class="w-2 h-2 bg-primary-500 rounded-full flex-shrink-0"></div><span class="text-dark-600 text-xs font-medium">Nufarm</span></div>
+                  <div class="flex items-center gap-2 p-3 bg-dark-50 rounded-xl"><div class="w-2 h-2 bg-primary-500 rounded-full flex-shrink-0"></div><span class="text-dark-600 text-xs font-medium">FMC</span></div>
                 </div>
               </div>
             </div>
@@ -729,34 +722,26 @@
         </div>
       </section>
 
-      <!-- Vision Mission -->
       <section class="py-24 bg-dark-950">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             <div class="p-8 rounded-3xl glass-card" data-aos="fade-up" data-aos-delay="0">
               <div class="w-12 h-12 bg-primary-500/20 rounded-xl flex items-center justify-center mb-6">
-                <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                </svg>
+                <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
               </div>
               <h3 class="font-bold text-xl text-white mb-3">Visi</h3>
               <p class="text-white/50 leading-relaxed text-sm">Menjadi distributor pertanian online terpercaya dan terlengkap yang mendukung kemajuan pertanian Indonesia.</p>
             </div>
             <div class="p-8 rounded-3xl glass-card" data-aos="fade-up" data-aos-delay="100">
               <div class="w-12 h-12 bg-primary-500/20 rounded-xl flex items-center justify-center mb-6">
-                <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                </svg>
+                <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" /></svg>
               </div>
               <h3 class="font-bold text-xl text-white mb-3">Misi</h3>
               <p class="text-white/50 leading-relaxed text-sm">Menyediakan produk pertanian berkualitas dengan harga terjangkau, pelayanan profesional, dan konsultasi gratis bagi seluruh petani Indonesia.</p>
             </div>
             <div class="p-8 rounded-3xl glass-card" data-aos="fade-up" data-aos-delay="200">
               <div class="w-12 h-12 bg-primary-500/20 rounded-xl flex items-center justify-center mb-6">
-                <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                </svg>
+                <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
               </div>
               <h3 class="font-bold text-xl text-white mb-3">Nilai</h3>
               <p class="text-white/50 leading-relaxed text-sm">Integritas, kualitas, kepuasan pelanggan, dan kontribusi positif bagi kemajuan pertanian Indonesia adalah landasan kami.</p>
@@ -768,7 +753,6 @@
 
     <!-- ========== PRODUCTS PAGE ========== -->
     <div id="page-products" class="page-section hidden">
-      <!-- Products Hero -->
       <section class="pt-28 pb-12 bg-hero-gradient relative overflow-hidden">
         <div class="absolute inset-0">
           <div class="absolute top-0 right-0 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl"></div>
@@ -777,24 +761,18 @@
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white/90 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest mb-6">🌿 Katalog Produk</span>
           <h1 class="font-black text-5xl sm:text-6xl text-white mb-4">Semua Produk</h1>
-          <p class="text-white/60 text-xl max-w-2xl mx-auto">72+ produk pertanian berkualitas tinggi dari produsen terpercaya. Filter berdasarkan kategori yang Anda butuhkan.</p>
+          <p class="text-white/60 text-xl max-w-2xl mx-auto">72+ produk pertanian berkualitas tinggi. Klik produk untuk melihat detail lengkap.</p>
         </div>
       </section>
 
-      <!-- Products Controls -->
       <section class="sticky top-[72px] z-30 bg-white/80 backdrop-blur-xl border-b border-dark-100 py-4 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-            <!-- Search -->
             <div class="relative flex-1 w-full">
-              <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-dark-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
+              <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-dark-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
               <input type="text" id="product-search" placeholder="Cari produk..." oninput="filterProducts()"
                 class="w-full pl-11 pr-4 py-3 rounded-xl border border-dark-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-all duration-200 text-dark-900 text-sm bg-white" />
             </div>
-
-            <!-- Category Filters -->
             <div class="flex flex-wrap gap-2">
               <button onclick="filterByCategory('all')" class="cat-btn active px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200" data-cat="all">Semua</button>
               <button onclick="filterByCategory('bibit')" class="cat-btn px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200" data-cat="bibit">🌱 Bibit</button>
@@ -808,18 +786,13 @@
         </div>
       </section>
 
-      <!-- Products Grid -->
       <section class="py-16 bg-dark-50 min-h-[60vh]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div id="products-result-info" class="mb-6 flex items-center justify-between">
-            <p class="text-dark-500 text-sm"><span id="products-count">72</span> produk ditemukan</p>
-          </div>
+          <div id="products-result-info" class="mb-6"><p class="text-dark-500 text-sm"><span id="products-count">72</span> produk ditemukan</p></div>
           <div id="product-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
           <div id="no-products" class="hidden py-24 text-center">
             <div class="w-20 h-20 bg-dark-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <svg class="w-10 h-10 text-dark-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
+              <svg class="w-10 h-10 text-dark-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
             </div>
             <p class="font-semibold text-dark-700 text-xl">Produk tidak ditemukan</p>
             <p class="text-dark-400 text-sm mt-1">Coba kata kunci lain atau pilih kategori berbeda</p>
@@ -830,58 +803,44 @@
 
     <!-- ========== CONTACT PAGE ========== -->
     <div id="page-contact" class="page-section hidden">
-      <!-- Contact Hero -->
       <section class="pt-28 pb-12 bg-hero-gradient relative overflow-hidden">
         <div class="absolute inset-0 opacity-[0.02]" style="background-image: linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px); background-size: 60px 60px;"></div>
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white/90 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest mb-6">📞 Hubungi Kami</span>
           <h1 class="font-black text-5xl sm:text-6xl text-white mb-4">Kontak</h1>
-          <p class="text-white/60 text-xl max-w-2xl mx-auto">Ada pertanyaan? Tim kami siap membantu Anda setiap saat.</p>
+          <p class="text-white/60 text-xl max-w-2xl mx-auto">Ada pertanyaan? Tim BumiTani siap membantu Anda setiap saat.</p>
         </div>
       </section>
 
-      <!-- Contact Content -->
       <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="grid lg:grid-cols-2 gap-16">
-
-            <!-- Contact Info -->
             <div data-aos="fade-right">
-              <h2 class="font-black text-3xl text-dark-900 mb-8">Hubungi TaniSmart</h2>
-
+              <h2 class="font-black text-3xl text-dark-900 mb-8">Hubungi BumiTani</h2>
               <div class="space-y-6">
                 <div class="flex items-start gap-4 p-6 rounded-2xl border border-dark-100 hover:border-primary-200 hover:bg-primary-50/20 transition-all duration-300">
                   <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <svg class="w-6 h-6 text-primary-600" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                    </svg>
+                    <svg class="w-6 h-6 text-primary-600" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                   </div>
                   <div>
                     <div class="font-bold text-dark-900 mb-1">WhatsApp Admin</div>
-                    <a href="https://wa.me/6281234567890" target="_blank" class="text-primary-600 font-medium hover:text-primary-700 transition-colors">+62 812-3456-7890</a>
+                    <a href="https://wa.me/6285795185561" target="_blank" class="text-primary-600 font-medium hover:text-primary-700 transition-colors">+62 857-9518-5561</a>
                     <div class="text-dark-400 text-xs mt-1">Senin – Sabtu, 07.00 – 20.00 WIB</div>
                   </div>
                 </div>
-
                 <div class="flex items-start gap-4 p-6 rounded-2xl border border-dark-100 hover:border-primary-200 hover:bg-primary-50/20 transition-all duration-300">
                   <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
+                    <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                   </div>
                   <div>
                     <div class="font-bold text-dark-900 mb-1">Email</div>
-                    <a href="mailto:info@tanismart.com" class="text-primary-600 font-medium hover:text-primary-700 transition-colors">info@tanismart.com</a>
+                    <a href="mailto:info@bumitani.com" class="text-primary-600 font-medium hover:text-primary-700 transition-colors">info@bumitani.com</a>
                     <div class="text-dark-400 text-xs mt-1">Respon dalam 1×24 jam kerja</div>
                   </div>
                 </div>
-
                 <div class="flex items-start gap-4 p-6 rounded-2xl border border-dark-100 hover:border-primary-200 hover:bg-primary-50/20 transition-all duration-300">
                   <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
+                    <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                   </div>
                   <div>
                     <div class="font-bold text-dark-900 mb-1">Alamat Toko</div>
@@ -889,12 +848,9 @@
                     <p class="text-dark-400 text-xs mt-1">Buka setiap hari, 07.00 – 17.00 WIB</p>
                   </div>
                 </div>
-
                 <div class="flex items-start gap-4 p-6 rounded-2xl border border-dark-100 hover:border-primary-200 hover:bg-primary-50/20 transition-all duration-300">
                   <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-                    </svg>
+                    <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" /></svg>
                   </div>
                   <div>
                     <div class="font-bold text-dark-900 mb-1">Konsultasi Gratis</div>
@@ -905,7 +861,6 @@
               </div>
             </div>
 
-            <!-- Contact Form -->
             <div data-aos="fade-left">
               <div class="p-8 rounded-3xl border border-dark-100 shadow-xl shadow-dark-900/5">
                 <h3 class="font-bold text-2xl text-dark-900 mb-6">Kirim Pesan</h3>
@@ -913,35 +868,28 @@
                   <div class="grid sm:grid-cols-2 gap-4">
                     <div>
                       <label class="block text-sm font-semibold text-dark-700 mb-1.5">Nama Lengkap *</label>
-                      <input type="text" id="contact-name" placeholder="Nama Anda" required
-                        class="w-full px-4 py-3 rounded-xl border border-dark-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-all duration-200 text-dark-900 text-sm" />
+                      <input type="text" id="contact-name" placeholder="Nama Anda" required class="w-full px-4 py-3 rounded-xl border border-dark-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-all duration-200 text-dark-900 text-sm" />
                     </div>
                     <div>
                       <label class="block text-sm font-semibold text-dark-700 mb-1.5">No. WhatsApp *</label>
-                      <input type="tel" id="contact-phone" placeholder="08xx-xxxx-xxxx" required
-                        class="w-full px-4 py-3 rounded-xl border border-dark-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-all duration-200 text-dark-900 text-sm" />
+                      <input type="tel" id="contact-phone" placeholder="08xx-xxxx-xxxx" required class="w-full px-4 py-3 rounded-xl border border-dark-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-all duration-200 text-dark-900 text-sm" />
                     </div>
                   </div>
                   <div>
                     <label class="block text-sm font-semibold text-dark-700 mb-1.5">Subjek *</label>
-                    <input type="text" id="contact-subject" placeholder="Pertanyaan tentang..." required
-                      class="w-full px-4 py-3 rounded-xl border border-dark-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-all duration-200 text-dark-900 text-sm" />
+                    <input type="text" id="contact-subject" placeholder="Pertanyaan tentang..." required class="w-full px-4 py-3 rounded-xl border border-dark-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-all duration-200 text-dark-900 text-sm" />
                   </div>
                   <div>
                     <label class="block text-sm font-semibold text-dark-700 mb-1.5">Pesan *</label>
-                    <textarea id="contact-message" rows="4" placeholder="Tulis pesan Anda di sini..." required
-                      class="w-full px-4 py-3 rounded-xl border border-dark-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-all duration-200 text-dark-900 text-sm resize-none"></textarea>
+                    <textarea id="contact-message" rows="4" placeholder="Tulis pesan Anda di sini..." required class="w-full px-4 py-3 rounded-xl border border-dark-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-all duration-200 text-dark-900 text-sm resize-none"></textarea>
                   </div>
                   <button type="submit" class="w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white py-4 rounded-2xl font-bold text-base transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2 shadow-lg shadow-primary-500/30">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                    </svg>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                     Kirim via WhatsApp
                   </button>
                 </form>
               </div>
             </div>
-
           </div>
         </div>
       </section>
@@ -949,29 +897,23 @@
 
     <!-- ========== FAQ PAGE ========== -->
     <div id="page-faq" class="page-section hidden">
-      <!-- FAQ Hero -->
       <section class="pt-28 pb-12 bg-hero-gradient relative overflow-hidden">
         <div class="absolute inset-0 opacity-[0.02]" style="background-image: linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px); background-size: 60px 60px;"></div>
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white/90 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest mb-6">❓ Pertanyaan</span>
           <h1 class="font-black text-5xl sm:text-6xl text-white mb-4">FAQ</h1>
-          <p class="text-white/60 text-xl max-w-2xl mx-auto">Pertanyaan yang sering ditanyakan seputar produk dan layanan TaniSmart.</p>
+          <p class="text-white/60 text-xl max-w-2xl mx-auto">Pertanyaan yang sering ditanyakan seputar produk dan layanan BumiTani.</p>
         </div>
       </section>
 
-      <!-- FAQ Content -->
       <section class="py-24 bg-white">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div id="faq-list" class="space-y-4"></div>
-
-          <!-- CTA After FAQ -->
           <div class="mt-16 p-8 rounded-3xl bg-primary-50 border border-primary-100 text-center" data-aos="fade-up">
             <h3 class="font-bold text-2xl text-dark-900 mb-3">Masih ada pertanyaan?</h3>
-            <p class="text-dark-500 mb-6">Tim kami siap membantu Anda. Hubungi langsung via WhatsApp untuk respon lebih cepat.</p>
-            <a href="https://wa.me/6281234567890" target="_blank" class="inline-flex items-center gap-2 bg-primary-500 hover:bg-primary-600 text-white px-8 py-4 rounded-2xl font-bold transition-all duration-200 hover:scale-105">
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-              </svg>
+            <p class="text-dark-500 mb-6">Tim BumiTani siap membantu Anda. Hubungi langsung via WhatsApp untuk respon lebih cepat.</p>
+            <a href="https://wa.me/6285795185561" target="_blank" class="inline-flex items-center gap-2 bg-primary-500 hover:bg-primary-600 text-white px-8 py-4 rounded-2xl font-bold transition-all duration-200 hover:scale-105">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
               Chat WhatsApp
             </a>
           </div>
@@ -987,28 +929,19 @@
   <footer class="bg-dark-950 border-t border-white/5">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-
-        <!-- Brand -->
         <div class="lg:col-span-1">
           <a href="#" onclick="showPage('home')" class="flex items-center gap-2 mb-5">
             <div class="w-9 h-9 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center">
-              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 3C7 3 3 7 3 12s4 9 9 9 9-4 9-9-4-9-9-9z M12 3c0 0-3 5-3 9s3 9 3 9 3-5 3-9-3-9-3-9z M3 12h18" />
-              </svg>
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 3C7 3 3 7 3 12s4 9 9 9 9-4 9-9-4-9-9-9z M12 3c0 0-3 5-3 9s3 9 3 9 3-5 3-9-3-9-3-9z M3 12h18" /></svg>
             </div>
-            <span class="font-black text-xl text-white">Tani<span class="text-primary-400">Smart</span></span>
+            <span class="font-black text-xl text-white">Bumi<span class="text-primary-400">Tani</span></span>
           </a>
           <p class="text-dark-400 text-sm leading-relaxed mb-6">Distributor terpercaya obat dan alat pertanian online. Melayani seluruh Indonesia dengan produk berkualitas.</p>
-          <div class="flex gap-3">
-            <a href="https://wa.me/6281234567890" target="_blank" class="w-9 h-9 bg-white/5 hover:bg-primary-500/20 rounded-xl flex items-center justify-center transition-all duration-200 group">
-              <svg class="w-4 h-4 text-dark-400 group-hover:text-primary-400" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-              </svg>
-            </a>
-          </div>
+          <a href="https://wa.me/6285795185561" target="_blank" class="inline-flex items-center gap-2 text-dark-400 hover:text-primary-400 text-sm transition-colors duration-200">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp BumiTani
+          </a>
         </div>
-
-        <!-- Navigation -->
         <div>
           <h4 class="font-bold text-white mb-5 text-sm uppercase tracking-wider">Navigasi</h4>
           <ul class="space-y-3">
@@ -1019,8 +952,6 @@
             <li><a href="#" onclick="showPage('faq')" class="text-dark-400 hover:text-primary-400 text-sm transition-colors duration-200">FAQ</a></li>
           </ul>
         </div>
-
-        <!-- Categories -->
         <div>
           <h4 class="font-bold text-white mb-5 text-sm uppercase tracking-wider">Kategori</h4>
           <ul class="space-y-3">
@@ -1032,61 +963,45 @@
             <li><a href="#" onclick="showPage('products'); filterByCategory('pupuk')" class="text-dark-400 hover:text-primary-400 text-sm transition-colors duration-200">🌾 Pupuk</a></li>
           </ul>
         </div>
-
-        <!-- Contact -->
         <div>
           <h4 class="font-bold text-white mb-5 text-sm uppercase tracking-wider">Kontak</h4>
           <ul class="space-y-3">
             <li class="flex items-start gap-2">
-              <svg class="w-4 h-4 text-primary-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-              </svg>
-              <a href="https://wa.me/6281234567890" target="_blank" class="text-dark-400 hover:text-primary-400 text-sm transition-colors duration-200">+62 812-3456-7890</a>
+              <svg class="w-4 h-4 text-primary-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              <a href="https://wa.me/6285795185561" target="_blank" class="text-dark-400 hover:text-primary-400 text-sm transition-colors duration-200">+62 857-9518-5561</a>
             </li>
             <li class="flex items-start gap-2">
-              <svg class="w-4 h-4 text-primary-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-              <span class="text-dark-400 text-sm">info@tanismart.com</span>
+              <svg class="w-4 h-4 text-primary-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+              <span class="text-dark-400 text-sm">info@bumitani.com</span>
             </li>
             <li class="flex items-start gap-2">
-              <svg class="w-4 h-4 text-primary-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
+              <svg class="w-4 h-4 text-primary-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
               <span class="text-dark-400 text-sm">Sen–Sab: 07.00–20.00 WIB</span>
             </li>
           </ul>
         </div>
       </div>
-
-      <!-- Footer Bottom -->
       <div class="pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <p class="text-dark-500 text-xs">© 2024 TaniSmart. Seluruh hak cipta dilindungi undang-undang.</p>
+        <p class="text-dark-500 text-xs">© 2024 BumiTani. Seluruh hak cipta dilindungi undang-undang.</p>
         <p class="text-dark-600 text-xs">Dibuat dengan ❤️ untuk kemajuan pertanian Indonesia</p>
       </div>
     </div>
   </footer>
 
-  <!-- ==============================
-       FLOATING WHATSAPP BUTTON
-  ============================== -->
-  <a href="https://wa.me/6281234567890" target="_blank" id="wa-float"
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/6285795185561" target="_blank" id="wa-float"
     class="fixed bottom-6 right-6 z-40 w-14 h-14 bg-[#25D366] hover:bg-[#1ebe57] rounded-full flex items-center justify-center shadow-xl shadow-[#25D366]/40 transition-all duration-300 hover:scale-110"
-    title="Chat WhatsApp">
+    title="Chat WhatsApp BumiTani">
     <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
     </svg>
   </a>
 
-  <!-- ==============================
-       TOAST NOTIFICATION
-  ============================== -->
+  <!-- Toast -->
   <div id="toast" class="fixed bottom-24 right-6 z-50 transform translate-x-full transition-all duration-500">
     <div class="bg-dark-900 text-white px-5 py-3 rounded-2xl shadow-xl text-sm font-medium flex items-center gap-3 min-w-[240px]">
       <div class="w-8 h-8 bg-primary-500 rounded-xl flex items-center justify-center flex-shrink-0">
-        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
-        </svg>
+        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
       </div>
       <span id="toast-message">Ditambahkan ke keranjang!</span>
     </div>
