@@ -1,12 +1,12 @@
-# TaniSmart – Modern Agricultural E-Commerce Website
+# BumiTani – Modern Agricultural E-Commerce Website
 
-Website ecommerce pertanian modern premium. Dibuat dengan HTML, TailwindCSS CDN, dan Vanilla JavaScript.
+Website e-commerce pertanian modern premium. Dibuat dengan HTML, TailwindCSS CDN, dan Vanilla JavaScript.
 
 ## 🚀 Cara Menjalankan
 
 Cukup buka file `index.html` di browser. **Tidak perlu npm, node, atau build process apapun.**
 
-```
+```text
 web-tani-pupuk/
 └── index.html   ← Buka file ini di browser
 ```
@@ -17,73 +17,68 @@ web-tani-pupuk/
 Buka `script.js`, cari baris paling atas:
 
 ```js
-const ADMIN_WHATSAPP = '6281234567890'; // Ganti nomor ini
+const ADMIN_WHATSAPP = "085795185561"; // Ganti nomor ini
 ```
 
-Ganti `6281234567890` dengan nomor WhatsApp admin Anda (format internasional, tanpa tanda +).
+Ganti `"085795185561"` dengan nomor WhatsApp admin Anda. Sistem secara otomatis mengonversi awalan angka `0` menjadi format kode negara Indonesia (`62`) saat melakukan pengalihan pesan.
 
 ## 📁 Struktur File
 
-```
+```text
 web-tani-pupuk/
-├── index.html              ← Halaman utama
-├── style.css               ← Custom styles
-├── script.js               ← JavaScript (data produk + logika)
-├── Header-Profil.jpg       ← Banner halaman Profil
-├── gambar-untuk-web-pertanian/
-│   ├── bibit/              ← 1.jpg – 12.jpg
-│   ├── nutrisi/            ← 1.jpg – 12.jpg
-│   ├── pakan/              ← 1.jpg – 12.jpg
-│   ├── peralatan/          ← 1.jpg – 12.jpg
-│   ├── Pestisida/          ← 1.jpg – 12.jpg
-│   └── pupuk/              ← 1.jpg – 12.jpg
-└── teks-deskripsi-*/       ← File teks deskripsi produk
+├── index.html              ← Halaman utama (SPA)
+├── style.css               ← Custom styles & typography
+├── script.js               ← JavaScript (database 72 produk & logika keranjang)
+├── favicon.png             ← Icon website (Favicon)
+├── Header-Profil.jpg       ← Gambar Banner halaman Profil Perusahaan
+└── products/
+    ├── bibit/              ← 1.jpg – 12.jpg
+    ├── nutrisi/            ← 1.jpg – 12.jpg
+    ├── pakan/              ← 1.jpg – 12.jpg
+    ├── peralatan/          ← 1.jpg – 12.jpg
+    ├── pestisida/          ← 1.jpg – 12.jpg
+    └── pupuk/              ← 1.jpg – 12.jpg
 ```
 
 ## 🌟 Fitur
 
 - ✅ Sticky navbar dengan blur effect
-- ✅ Mobile responsive navbar
-- ✅ Hero section premium dengan animasi GSAP
-- ✅ Featured products
-- ✅ Katalog 72 produk (6 kategori × 12 produk)
+- ✅ Mobile responsive menu drawer
+- ✅ Hero section premium dengan visual elegan (tanpa emoji)
+- ✅ Featured products (pilihan produk rating tertinggi)
+- ✅ Katalog lengkap 72 produk (6 kategori × 12 produk)
 - ✅ Filter kategori real-time
 - ✅ Pencarian produk real-time
-- ✅ Quick view modal per produk
-- ✅ Sistem keranjang belanja (Add to Cart)
+- ✅ Quick view modal detail per produk dengan deskripsi lengkap
+- ✅ Sistem keranjang belanja dinamis (Add to Cart) menggunakan LocalStorage
 - ✅ Cart sidebar modern
-- ✅ Checkout otomatis via WhatsApp
-- ✅ Floating WhatsApp button
-- ✅ FAQ accordion
-- ✅ Halaman Profil dengan Header-Profil.jpg
-- ✅ Halaman Kontak dengan form WhatsApp
-- ✅ AOS scroll animations
-- ✅ Testimonial section
-- ✅ Footer profesional
+- ✅ Checkout otomatis via WhatsApp dengan template data pengiriman lengkap (Nama, Alamat, Catatan)
+- ✅ Form Kontak direct ke WhatsApp admin
+- ✅ Floating WhatsApp button untuk konsultasi langsung
+- ✅ FAQ accordion yang interaktif
+- ✅ Halaman Profil dengan estetika premium (frame rounded & bayangan)
 - ✅ SEO meta tags & Open Graph
-- ✅ Lazy loading gambar
+- ✅ Lazy loading gambar untuk performa optimal
 - ✅ Smooth scrolling
 
 ## 🎨 Design
 
-- **Font**: Inter (Google Fonts)
-- **Warna**: Hijau modern premium + putih clean + dark accent
-- **Style**: Glassmorphism, gradient modern, card hover animation
-- **Referensi**: Hostinger, Shopify, Stripe, Linear
+- **Font**: Inter & Manrope (Google Fonts)
+- **Warna**: Natural premium (Sage green, forest green, broken white, dark accent)
+- **Style**: Clean luxury UI, subtle shadows, glassmorphism, card hover micro-animations
+- **Ikon**: Lucide Icons (bebas emoji untuk kesan profesional)
 
-## 📦 CDN yang Digunakan
+## 📦 CDN / Library yang Digunakan
 
 - TailwindCSS: `https://cdn.tailwindcss.com`
-- AOS Animation: `https://unpkg.com/aos@2.3.4/dist/aos.css`
-- GSAP: `https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js`
-- Google Fonts: Inter
+- Lucide Icons: `https://unpkg.com/lucide@latest`
 
 ## 🚢 Deploy
 
-Website ini langsung siap di-deploy tanpa build process ke:
+Website ini langsung siap di-deploy tanpa build process ke layanan hosting statis apa pun:
 - **Vercel**: Drop folder project ke vercel.com
 - **Netlify**: Drag & drop folder ke netlify.com
-- **GitHub Pages**: Push ke repo → enable Pages
+- **GitHub Pages**: Push ke repo → aktifkan di Settings/Pages
 
 ---
 
